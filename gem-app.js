@@ -1,4 +1,4 @@
-// title: Стена Долгостроя
+// title: Гемострой
 // about: Интерактивная кирпичная стена ожидания приложения
 export default async (req, gem) => {
   if (req.method === 'POST') {
@@ -17,7 +17,7 @@ export default async (req, gem) => {
 
   return `<!doctype html><html><head><meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
-<title>Стена Долгостроя</title></head><body>
+<title>Гемострой</title></head><body>
 <div id="root"></div>
 <script src="https://mikemint.github.io/wall-miniapp/app.js?v=${Date.now()}"></script>
 </body></html>`;
