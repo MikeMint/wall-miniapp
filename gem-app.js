@@ -19,6 +19,6 @@ export default async (req, gem) => {
 <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <title>Стена Долгостроя</title></head><body>
 <div id="root"></div>
-<script src="https://mikemint.github.io/wall-miniapp/app.js?v=1"></script>
+<script src="https://mikemint.github.io/wall-miniapp/app.js?v=${Date.now()}"></script>
 </body></html>`;
 };
