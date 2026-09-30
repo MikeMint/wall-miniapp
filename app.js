@@ -89,16 +89,16 @@
         overflow-y: auto;
         overflow-x: hidden;
         scroll-behavior: smooth;
-        background-color: #0d0605;
+        background-color: #1a1210;
         background-image:
-          radial-gradient(ellipse at 50% -10%, rgba(255, 215, 130, 0.38) 0%, rgba(255, 140, 40, 0.1) 45%, rgba(0, 0, 0, 0.85) 90%),
-          radial-gradient(ellipse at 50% 100%, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.5) 60%),
-          url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='52' fill='%23140d0c'%3E%3Crect width='120' height='52' fill='%2317100f'/%3E%3C!-- Row 1 --%3E%3Crect x='2' y='2' width='56' height='22' rx='1' fill='%23782b1d'/%3E%3Crect x='2' y='2' width='56' height='2' fill='%239e3c2b' opacity='0.7'/%3E%3Crect x='2' y='22' width='56' height='2' fill='%23381008' opacity='0.8'/%3E%3Crect x='62' y='2' width='56' height='22' rx='1' fill='%23632014'/%3E%3Crect x='62' y='2' width='56' height='2' fill='%23852d1d' opacity='0.7'/%3E%3Crect x='62' y='22' width='56' height='2' fill='%23300c06' opacity='0.8'/%3E%3C!-- Row 2 Staggered --%3E%3Crect x='-28' y='28' width='56' height='22' rx='1' fill='%236e2518'/%3E%3Crect x='0' y='28' width='26' height='2' fill='%23913423' opacity='0.7'/%3E%3Crect x='0' y='48' width='26' height='2' fill='%23381008' opacity='0.8'/%3E%3Crect x='32' y='28' width='56' height='22' rx='1' fill='%23822f20'/%3E%3Crect x='32' y='28' width='56' height='2' fill='%23a84230' opacity='0.7'/%3E%3Crect x='32' y='48' width='56' height='2' fill='%2342130a' opacity='0.8'/%3E%3Crect x='92' y='28' width='56' height='22' rx='1' fill='%235c1d12'/%3E%3Crect x='92' y='28' width='28' height='2' fill='%237d281a' opacity='0.7'/%3E%3Crect x='92' y='48' width='28' height='2' fill='%232b0a05' opacity='0.8'/%3E%3C/svg%3E");
-        background-size: 100% 100%, 100% 100%, 120px 52px;
+          radial-gradient(ellipse at 50% 15%, rgba(255, 235, 195, 0.22) 0%, rgba(190, 85, 35, 0.08) 55%, rgba(8, 3, 2, 0.78) 100%),
+          linear-gradient(180deg, rgba(0, 0, 0, 0.12) 0%, rgba(0, 0, 0, 0.0) 50%, rgba(0, 0, 0, 0.45) 100%),
+          url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27120%27 height=%2750%27 fill=%27%232b2320%27%3E%3Crect width=%27120%27 height=%2750%27 fill=%27%232b2320%27/%3E%3Cline x1=%270%27 y1=%2725%27 x2=%27120%27 y2=%2725%27 stroke=%27%23191311%27 stroke-width=%271.2%27 opacity=%270.75%27/%3E%3Cline x1=%270%27 y1=%2750%27 x2=%27120%27 y2=%2750%27 stroke=%27%23191311%27 stroke-width=%271.2%27 opacity=%270.75%27/%3E%3Cline x1=%2760%27 y1=%270%27 x2=%2760%27 y2=%2725%27 stroke=%27%23191311%27 stroke-width=%271.2%27 opacity=%270.75%27/%3E%3Cline x1=%2730%27 y1=%2725%27 x2=%2730%27 y2=%2750%27 stroke=%27%23191311%27 stroke-width=%271.2%27 opacity=%270.75%27/%3E%3Cline x1=%2790%27 y1=%2725%27 x2=%2790%27 y2=%2750%27 stroke=%27%23191311%27 stroke-width=%271.2%27 opacity=%270.75%27/%3E%3Crect x=%272%27 y=%272%27 width=%2756%27 height=%2721%27 rx=%271.5%27 fill=%27%239e3e2c%27/%3E%3Crect x=%273%27 y=%272%27 width=%2754%27 height=%272%27 fill=%27%23e27965%27 opacity=%270.55%27/%3E%3Crect x=%272%27 y=%273%27 width=%272%27 height=%2719%27 fill=%27%23e27965%27 opacity=%270.35%27/%3E%3Crect x=%273%27 y=%2721%27 width=%2754%27 height=%272%27 fill=%27%234a160d%27 opacity=%270.75%27/%3E%3Crect x=%2756%27 y=%273%27 width=%272%27 height=%2719%27 fill=%27%234a160d%27 opacity=%270.65%27/%3E%3Cellipse cx=%2720%27 cy=%2712%27 rx=%276%27 ry=%273%27 fill=%27%23ba4e3a%27 opacity=%270.35%27/%3E%3Cellipse cx=%2742%27 cy=%279%27 rx=%275%27 ry=%272.5%27 fill=%27%237c2a1c%27 opacity=%270.35%27/%3E%3Ccircle cx=%2712%27 cy=%2718%27 r=%271.5%27 fill=%27%234d160e%27 opacity=%270.4%27/%3E%3Ccircle cx=%2748%27 cy=%2716%27 r=%271.2%27 fill=%27%23e07a67%27 opacity=%270.3%27/%3E%3Crect x=%2762%27 y=%272%27 width=%2756%27 height=%2721%27 rx=%271.5%27 fill=%27%238c3422%27/%3E%3Crect x=%2763%27 y=%272%27 width=%2754%27 height=%272%27 fill=%27%23cb6450%27 opacity=%270.5%27/%3E%3Crect x=%2762%27 y=%273%27 width=%272%27 height=%2719%27 fill=%27%23cb6450%27 opacity=%270.3%27/%3E%3Crect x=%2763%27 y=%2721%27 width=%2754%27 height=%272%27 fill=%27%233e1007%27 opacity=%270.8%27/%3E%3Crect x=%27116%27 y=%273%27 width=%272%27 height=%2719%27 fill=%27%233e1007%27 opacity=%270.7%27/%3E%3Cellipse cx=%2778%27 cy=%2715%27 rx=%277%27 ry=%273%27 fill=%27%23a43d2b%27 opacity=%270.3%27/%3E%3Cellipse cx=%27100%27 cy=%2710%27 rx=%275%27 ry=%272.5%27 fill=%27%236a1f13%27 opacity=%270.4%27/%3E%3Ccircle cx=%2770%27 cy=%278%27 r=%271.5%27 fill=%27%23451108%27 opacity=%270.45%27/%3E%3Ccircle cx=%27110%27 cy=%2717%27 r=%271.3%27 fill=%27%23cb6754%27 opacity=%270.3%27/%3E%3Crect x=%2732%27 y=%2727%27 width=%2756%27 height=%2721%27 rx=%271.5%27 fill=%27%23a6422f%27/%3E%3Crect x=%2733%27 y=%2727%27 width=%2754%27 height=%272%27 fill=%27%23f08d7a%27 opacity=%270.55%27/%3E%3Crect x=%2732%27 y=%2728%27 width=%272%27 height=%2719%27 fill=%27%23f08d7a%27 opacity=%270.3%27/%3E%3Crect x=%2733%27 y=%2746%27 width=%2754%27 height=%272%27 fill=%27%23541b10%27 opacity=%270.75%27/%3E%3Crect x=%2786%27 y=%2728%27 width=%272%27 height=%2719%27 fill=%27%23541b10%27 opacity=%270.65%27/%3E%3Cellipse cx=%2750%27 cy=%2736%27 rx=%278%27 ry=%273.5%27 fill=%27%23c4533e%27 opacity=%270.3%27/%3E%3Cellipse cx=%2772%27 cy=%2741%27 rx=%276%27 ry=%273%27 fill=%27%237e291b%27 opacity=%270.4%27/%3E%3Ccircle cx=%2740%27 cy=%2743%27 r=%271.4%27 fill=%27%2354170d%27 opacity=%270.4%27/%3E%3Ccircle cx=%2780%27 cy=%2733%27 r=%271.5%27 fill=%27%23e87864%27 opacity=%270.35%27/%3E%3Crect x=%270%27 y=%2727%27 width=%2728%27 height=%2721%27 rx=%271.5%27 fill=%27%23b34b36%27/%3E%3Crect x=%270%27 y=%2727%27 width=%2727%27 height=%272%27 fill=%27%23f39280%27 opacity=%270.55%27/%3E%3Crect x=%2726%27 y=%2728%27 width=%272%27 height=%2719%27 fill=%27%23581e13%27 opacity=%270.65%27/%3E%3Crect x=%270%27 y=%2746%27 width=%2727%27 height=%272%27 fill=%27%23581e13%27 opacity=%270.75%27/%3E%3Cellipse cx=%2714%27 cy=%2738%27 rx=%275%27 ry=%273%27 fill=%27%238e3322%27 opacity=%270.35%27/%3E%3Ccircle cx=%2722%27 cy=%2732%27 r=%271.2%27 fill=%27%23e6806e%27 opacity=%270.35%27/%3E%3Crect x=%2792%27 y=%2727%27 width=%2728%27 height=%2721%27 rx=%271.5%27 fill=%27%23b34b36%27/%3E%3Crect x=%2793%27 y=%2727%27 width=%2727%27 height=%272%27 fill=%27%23f39280%27 opacity=%270.55%27/%3E%3Crect x=%2792%27 y=%2728%27 width=%272%27 height=%2719%27 fill=%27%23f39280%27 opacity=%270.35%27/%3E%3Crect x=%2793%27 y=%2746%27 width=%2727%27 height=%272%27 fill=%27%23581e13%27 opacity=%270.75%27/%3E%3Cellipse cx=%27106%27 cy=%2735%27 rx=%276%27 ry=%273%27 fill=%27%23cb5d48%27 opacity=%270.3%27/%3E%3Ccircle cx=%2798%27 cy=%2742%27 r=%271.4%27 fill=%27%23641d11%27 opacity=%270.4%27/%3E%3C/svg%3E");
+        background-size: 100% 100%, 100% 100%, 120px 50px;
         display: flex;
         flex-direction: column;
         padding: 8px 12px 14px 12px;
-        gap: 12px;
+        gap: 7px;
         box-shadow: inset 0 0 50px rgba(0,0,0,0.85);
       }
 
@@ -213,8 +213,8 @@
       .tag-bubble {
         position: relative;
         z-index: 3;
-        max-width: 86%;
-        padding: 2px 4px;
+        max-width: 80%;
+        padding: 1px 3px;
         transform-origin: center center;
         animation: sprayIn 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         display: inline-block;
@@ -222,27 +222,27 @@
 
       .tag-text {
         font-family: 'Dela Gothic One', 'Russo One', Impact, sans-serif;
-        line-height: 1.2;
-        letter-spacing: 0.5px;
+        line-height: 1.15;
+        letter-spacing: 0.3px;
         word-break: break-word;
         text-transform: uppercase;
         text-shadow:
-          0 0 6px currentColor,
-          0 0 14px currentColor,
-          1.5px 1.5px 0 #000,
+          0 0 3px currentColor,
+          0 0 7px currentColor,
+          1px 1px 0 #000,
           -1px -1px 0 #000,
           1px -1px 0 #000,
           -1px 1px 0 #000,
-          0 1.5px 0 #000,
-          1.5px 0 0 #000;
+          0 1px 0 #000,
+          1px 0 0 #000;
       }
 
       .tag-sig {
         font-family: 'JetBrains Mono', monospace;
-        font-size: 10px;
+        font-size: 8px;
         font-weight: 700;
-        color: rgba(255, 255, 255, 0.55);
-        letter-spacing: 0.3px;
+        color: rgba(255, 255, 255, 0.5);
+        letter-spacing: 0.2px;
         text-shadow: 1px 1px 2px #000;
         margin-top: 1px;
         display: block;
@@ -629,12 +629,12 @@
         const text = t.text || t.label || '';
         const len = text.length;
 
-        // Dynamic font sizing: short tags are punchy, long phrases stay compact
-        let fontSize = 16;
-        if (len <= 4) fontSize = 23;
-        else if (len <= 10) fontSize = 19;
-        else if (len <= 22) fontSize = 16;
-        else fontSize = 13.5;
+        // Dynamic font sizing: compact graffiti tags
+        let fontSize = 11;
+        if (len <= 4) fontSize = 14.5;
+        else if (len <= 10) fontSize = 12.5;
+        else if (len <= 22) fontSize = 11;
+        else fontSize = 9.5;
 
         // Organic horizontal positioning across the entire wall
         let maxOffset = len > 22 ? 8 : (len > 12 ? 22 : 46);
