@@ -44,12 +44,12 @@
       /* Warning tape subheader */
       .top-tape {
         flex-shrink: 0;
-        height: 28px;
+        height: 26px;
         background: repeating-linear-gradient(45deg, #f39c12 0 10px, #151515 10px 20px);
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 0 12px;
+        padding: 0 10px;
         box-shadow: 0 2px 8px rgba(0,0,0,0.8);
         z-index: 10;
         border-bottom: 2px solid #000;
@@ -60,14 +60,14 @@
         color: #f1c40f;
         font-family: 'JetBrains Mono', monospace;
         font-weight: 900;
-        font-size: 11px;
-        padding: 2px 8px;
+        font-size: 10px;
+        padding: 2px 7px;
         border-radius: 4px;
         letter-spacing: 0.5px;
         border: 1px solid #f39c1255;
         display: flex;
         align-items: center;
-        gap: 6px;
+        gap: 5px;
       }
 
       .tape-status {
@@ -75,8 +75,8 @@
         background: #f1c40f;
         font-family: 'JetBrains Mono', monospace;
         font-weight: 900;
-        font-size: 10px;
-        padding: 2px 6px;
+        font-size: 9px;
+        padding: 2px 5px;
         border-radius: 3px;
         letter-spacing: 0.5px;
       }
@@ -97,99 +97,107 @@
         background-size: 100% 100%, 100% 100%, 72px 36px;
         display: flex;
         flex-direction: column;
-        padding: 14px 12px;
-        gap: 16px;
+        padding: 10px 12px 14px 12px;
+        gap: 14px;
       }
 
-      /* Factory Safety Calendar Sign (Календарь случаев на производстве) */
+      /* Compact Factory Safety Calendar Sign (Охрана труда и разработки) */
       .safety-sign {
         position: relative;
-        background: linear-gradient(180deg, #113824 0%, #0a2517 100%);
-        border: 3px solid #d4e6d1;
-        border-radius: 8px;
-        padding: 10px 14px 12px 14px;
-        box-shadow: 0 6px 20px rgba(0,0,0,0.85), inset 0 0 15px rgba(0,0,0,0.5);
+        background: linear-gradient(180deg, #103321 0%, #081e13 100%);
+        border: 2px solid #cce5c8;
+        border-radius: 6px;
+        padding: 5px 12px 6px 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.8), inset 0 0 10px rgba(0,0,0,0.6);
         display: flex;
         flex-direction: column;
-        align-items: center;
-        text-align: center;
-        gap: 6px;
-        margin-bottom: 4px;
+        gap: 3px;
+        margin: 0 auto 4px auto;
+        width: 100%;
+        max-width: 360px;
         z-index: 4;
       }
 
-      /* Corner bolts on metallic plate */
       .safety-bolt {
         position: absolute;
-        width: 7px;
-        height: 7px;
+        width: 5px;
+        height: 5px;
         border-radius: 50%;
-        background: radial-gradient(#ccc, #444);
-        box-shadow: inset 1px 1px 1px #fff, 1px 1px 2px #000;
+        background: radial-gradient(#bbb, #333);
+        box-shadow: inset 0.5px 0.5px 1px #fff, 0.5px 0.5px 1px #000;
       }
-      .bolt-tl { top: 5px; left: 5px; }
-      .bolt-tr { top: 5px; right: 5px; }
-      .bolt-bl { bottom: 5px; left: 5px; }
-      .bolt-br { bottom: 5px; right: 5px; }
+      .bolt-tl { top: 3px; left: 3px; }
+      .bolt-tr { top: 3px; right: 3px; }
+      .bolt-bl { bottom: 3px; left: 3px; }
+      .bolt-br { bottom: 3px; right: 3px; }
 
-      .safety-top-stripe {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 10px;
-        font-weight: 900;
-        color: #f1c40f;
-        letter-spacing: 1px;
+      .safety-header-compact {
         display: flex;
         align-items: center;
-        gap: 5px;
+        justify-content: space-between;
+        border-bottom: 1px dashed rgba(204, 229, 200, 0.25);
+        padding-bottom: 2px;
       }
 
-      .safety-question {
+      .safety-title-compact {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 9px;
+        font-weight: 900;
+        color: #f1c40f;
+        letter-spacing: 0.5px;
+      }
+
+      .safety-sub-compact {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 8px;
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.6);
+        letter-spacing: 0.3px;
+      }
+
+      .safety-main-compact {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+      }
+
+      .safety-lbl-compact {
         font-family: 'Russo One', sans-serif;
-        font-size: 13px;
+        font-size: 11px;
         color: #fff;
         letter-spacing: 0.5px;
         text-transform: uppercase;
-        margin-top: 2px;
       }
 
-      .safety-score-row {
+      .safety-score-compact {
         display: flex;
         align-items: center;
-        justify-content: center;
-        gap: 10px;
-        margin: 4px 0;
+        gap: 6px;
       }
 
       .safety-flip-card {
         background: #000;
-        border: 2px solid #2ecc71;
-        border-radius: 6px;
-        padding: 2px 16px;
-        box-shadow: inset 0 0 10px rgba(46,204,113,0.3), 0 0 15px rgba(46,204,113,0.3);
+        border: 1.5px solid #2ecc71;
+        border-radius: 4px;
+        padding: 1px 8px;
+        box-shadow: inset 0 0 6px rgba(46,204,113,0.3), 0 0 8px rgba(46,204,113,0.25);
       }
 
       .safety-flip-num {
         font-family: 'JetBrains Mono', monospace;
-        font-size: 34px;
+        font-size: 20px;
         font-weight: 900;
         color: #2ecc71;
         line-height: 1.1;
-        text-shadow: 0 0 10px #2ecc71;
+        text-shadow: 0 0 6px #2ecc71;
       }
 
       .safety-unit {
         font-family: 'Russo One', sans-serif;
-        font-size: 20px;
+        font-size: 13px;
         font-weight: 900;
         color: #fff;
-        text-shadow: 1px 1px 0 #000;
-      }
-
-      .safety-sub {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 10px;
-        color: rgba(255,255,255,0.7);
-        font-weight: 700;
       }
 
       /* Particle canvas for aerosol mist */
@@ -204,8 +212,8 @@
       .tag-bubble {
         position: relative;
         z-index: 3;
-        max-width: 86%;
-        padding: 4px 8px;
+        max-width: 88%;
+        padding: 2px 6px;
         border-radius: 6px;
         transform-origin: center center;
         animation: sprayIn 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -218,7 +226,7 @@
 
       .tag-text {
         font-family: 'Rubik Dirt', 'Russo One', Impact, sans-serif;
-        font-size: 26px;
+        font-size: 24px;
         line-height: 1.2;
         letter-spacing: 1px;
         word-break: break-word;
@@ -227,23 +235,13 @@
         filter: drop-shadow(2px 2px 0px rgba(0,0,0,0.95)) drop-shadow(0 0 12px currentColor);
       }
 
-      .tag-drip {
-        position: absolute;
-        width: 3.5px;
-        background: currentColor;
-        border-radius: 0 0 3px 3px;
-        bottom: -14px;
-        box-shadow: 0 0 6px currentColor;
-        animation: dripDown 1.5s ease-out forwards;
-      }
-
       .tag-meta {
         display: flex;
         align-items: center;
         gap: 6px;
         font-size: 11px;
         color: rgba(255,255,255,0.8);
-        margin-top: 6px;
+        margin-top: 4px;
         font-weight: 600;
       }
 
@@ -259,12 +257,6 @@
       @keyframes sprayIn {
         0% { opacity: 0; transform: scale(0.6) rotate(-5deg); filter: blur(5px); }
         100% { opacity: 1; transform: scale(1); }
-      }
-
-      @keyframes dripDown {
-        0% { height: 0px; opacity: 0; }
-        50% { opacity: 1; }
-        100% { height: 16px; opacity: 0.85; }
       }
 
       .empty-state {
@@ -417,24 +409,27 @@
       </div>
 
       <div class="wall-viewport" id="wall-view">
-        <!-- Safety Calendar Sign -->
+        <!-- Compact Safety Calendar Sign -->
         <div class="safety-sign">
           <div class="safety-bolt bolt-tl"></div>
           <div class="safety-bolt bolt-tr"></div>
           <div class="safety-bolt bolt-bl"></div>
           <div class="safety-bolt bolt-br"></div>
-          <div class="safety-top-stripe">
-            <span>⚠️</span>
-            <span>ОХРАНА ТРУДА И РАЗРАБОТКИ</span>
+          
+          <div class="safety-header-compact">
+            <span class="safety-title-compact">⚠️ ОХРАНА ТРУДА И РАЗРАБОТКИ</span>
+            <span class="safety-sub-compact">РЕКОРД: 40 ДН.</span>
           </div>
-          <div class="safety-question">ДНЕЙ БЕЗ КОММИТОВ И РЕЛИЗА:</div>
-          <div class="safety-score-row">
-            <div class="safety-flip-card">
-              <span class="safety-flip-num" id="days-counter">${daysWithoutCommits}</span>
+
+          <div class="safety-main-compact">
+            <span class="safety-lbl-compact">ДНЕЙ БЕЗ КОММИТОВ:</span>
+            <div class="safety-score-compact">
+              <div class="safety-flip-card">
+                <span class="safety-flip-num" id="days-counter">${daysWithoutCommits}</span>
+              </div>
+              <span class="safety-unit">${getDaysWord(daysWithoutCommits)}</span>
             </div>
-            <span class="safety-unit">${getDaysWord(daysWithoutCommits)}</span>
           </div>
-          <div class="safety-sub">ПРЕДЫДУЩИЙ РЕКОРД: 40 ДНЕЙ · РАБОТАЕМ ДАЛЬШЕ</div>
         </div>
 
         <canvas id="particle-canvas"></canvas>
@@ -548,7 +543,7 @@
     }
     requestAnimationFrame(loopParticles);
 
-    // Tags rendering
+    // Tags rendering (clean, no awkward drip slashes)
     const container = document.getElementById('tags-container');
     const wallView = document.getElementById('wall-view');
 
@@ -570,7 +565,6 @@
         const col = t.color || PALETTE[idx % PALETTE.length].hex;
         const author = t.name || 'Аноним';
         const text = t.text || t.label || '';
-        const hasDrip = (idx % 2 === 0);
 
         return `
           <div class="tag-bubble" style="align-self: ${isRight ? 'flex-end' : 'flex-start'}; transform: rotate(${rotation}deg);">
@@ -578,7 +572,6 @@
               <div class="tag-text" style="color: ${col};">
                 ${esc(text)}
               </div>
-              ${hasDrip ? `<div class="tag-drip" style="left: ${isRight ? '15%' : '80%'}; color: ${col};"></div>` : ''}
             </div>
             <div class="tag-meta" style="justify-content: ${isRight ? 'flex-end' : 'flex-start'};">
               <span class="tag-author">— ${esc(author)}</span>
