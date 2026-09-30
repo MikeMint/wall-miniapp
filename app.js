@@ -12,8 +12,8 @@
       @import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Russo+One&family=JetBrains+Mono:wght@700;900&display=swap');
 
       :root {
-        --bg: #080202;
-        --mortar: #0a0302;
+        --bg: #0d0605;
+        --mortar: #120b0a;
         --accent: #ff3366;
       }
 
@@ -44,7 +44,7 @@
       /* Warning tape subheader */
       .top-tape {
         flex-shrink: 0;
-        height: 26px;
+        height: 24px;
         background: repeating-linear-gradient(45deg, #f39c12 0 10px, #151515 10px 20px);
         display: flex;
         align-items: center;
@@ -61,8 +61,8 @@
         font-family: 'JetBrains Mono', monospace;
         font-weight: 900;
         font-size: 10px;
-        padding: 2px 7px;
-        border-radius: 4px;
+        padding: 1px 6px;
+        border-radius: 3px;
         letter-spacing: 0.5px;
         border: 1px solid #f39c1255;
         display: flex;
@@ -76,12 +76,12 @@
         font-family: 'JetBrains Mono', monospace;
         font-weight: 900;
         font-size: 9px;
-        padding: 2px 5px;
+        padding: 1px 5px;
         border-radius: 3px;
         letter-spacing: 0.5px;
       }
 
-      /* Brick Wall Viewport with Realistic Running Bond Staggered Masonry */
+      /* Hyper-Realistic Running Bond Brick Wall Viewport */
       .wall-viewport {
         flex: 1;
         min-height: 0;
@@ -89,30 +89,31 @@
         overflow-y: auto;
         overflow-x: hidden;
         scroll-behavior: smooth;
-        background-color: #080202;
+        background-color: #0d0605;
         background-image:
-          radial-gradient(circle at 50% -10%, rgba(255, 210, 120, 0.28) 0%, rgba(255, 140, 40, 0.07) 50%, rgba(0, 0, 0, 0.85) 90%),
-          radial-gradient(ellipse at 50% 100%, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.4) 60%),
-          url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='36' fill='%23080202'%3E%3Crect width='72' height='36' fill='%230a0302'/%3E%3C!-- Row 1 --%3E%3Crect x='1' y='1' width='69' height='16' rx='1.5' fill='%23280e0a' stroke='%2336140e' stroke-width='1'/%3E%3C!-- Row 2 Staggered --%3E%3Crect x='-35' y='19' width='69' height='16' rx='1.5' fill='%23220b08' stroke='%2330110b' stroke-width='1'/%3E%3Crect x='37' y='19' width='69' height='16' rx='1.5' fill='%232a0f0b' stroke='%2338150e' stroke-width='1'/%3E%3C/svg%3E");
-        background-size: 100% 100%, 100% 100%, 72px 36px;
+          radial-gradient(ellipse at 50% -10%, rgba(255, 215, 130, 0.38) 0%, rgba(255, 140, 40, 0.1) 45%, rgba(0, 0, 0, 0.85) 90%),
+          radial-gradient(ellipse at 50% 100%, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.5) 60%),
+          url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='52' fill='%23140d0c'%3E%3Crect width='120' height='52' fill='%2317100f'/%3E%3C!-- Row 1 --%3E%3Crect x='2' y='2' width='56' height='22' rx='1' fill='%23782b1d'/%3E%3Crect x='2' y='2' width='56' height='2' fill='%239e3c2b' opacity='0.7'/%3E%3Crect x='2' y='22' width='56' height='2' fill='%23381008' opacity='0.8'/%3E%3Crect x='62' y='2' width='56' height='22' rx='1' fill='%23632014'/%3E%3Crect x='62' y='2' width='56' height='2' fill='%23852d1d' opacity='0.7'/%3E%3Crect x='62' y='22' width='56' height='2' fill='%23300c06' opacity='0.8'/%3E%3C!-- Row 2 Staggered --%3E%3Crect x='-28' y='28' width='56' height='22' rx='1' fill='%236e2518'/%3E%3Crect x='0' y='28' width='26' height='2' fill='%23913423' opacity='0.7'/%3E%3Crect x='0' y='48' width='26' height='2' fill='%23381008' opacity='0.8'/%3E%3Crect x='32' y='28' width='56' height='22' rx='1' fill='%23822f20'/%3E%3Crect x='32' y='28' width='56' height='2' fill='%23a84230' opacity='0.7'/%3E%3Crect x='32' y='48' width='56' height='2' fill='%2342130a' opacity='0.8'/%3E%3Crect x='92' y='28' width='56' height='22' rx='1' fill='%235c1d12'/%3E%3Crect x='92' y='28' width='28' height='2' fill='%237d281a' opacity='0.7'/%3E%3Crect x='92' y='48' width='28' height='2' fill='%232b0a05' opacity='0.8'/%3E%3C/svg%3E");
+        background-size: 100% 100%, 100% 100%, 120px 52px;
         display: flex;
         flex-direction: column;
-        padding: 10px 12px 14px 12px;
-        gap: 14px;
+        padding: 8px 12px 14px 12px;
+        gap: 12px;
+        box-shadow: inset 0 0 50px rgba(0,0,0,0.85);
       }
 
-      /* Compact Factory Safety Calendar Sign (Охрана труда и разработки) */
+      /* Compact Factory Safety Calendar Sign */
       .safety-sign {
         position: relative;
         background: linear-gradient(180deg, #103321 0%, #081e13 100%);
         border: 2px solid #cce5c8;
         border-radius: 6px;
-        padding: 5px 12px 6px 12px;
+        padding: 4px 10px 5px 10px;
         box-shadow: 0 4px 15px rgba(0,0,0,0.8), inset 0 0 10px rgba(0,0,0,0.6);
         display: flex;
         flex-direction: column;
-        gap: 3px;
-        margin: 0 auto 4px auto;
+        gap: 2px;
+        margin: 0 auto 2px auto;
         width: 100%;
         max-width: 360px;
         z-index: 4;
@@ -151,7 +152,7 @@
         font-family: 'JetBrains Mono', monospace;
         font-size: 8px;
         font-weight: 700;
-        color: rgba(255, 255, 255, 0.6);
+        color: rgba(255, 255, 255, 0.65);
         letter-spacing: 0.3px;
       }
 
@@ -180,13 +181,13 @@
         background: #000;
         border: 1.5px solid #2ecc71;
         border-radius: 4px;
-        padding: 1px 8px;
+        padding: 1px 7px;
         box-shadow: inset 0 0 6px rgba(46,204,113,0.3), 0 0 8px rgba(46,204,113,0.25);
       }
 
       .safety-flip-num {
         font-family: 'JetBrains Mono', monospace;
-        font-size: 20px;
+        font-size: 19px;
         font-weight: 900;
         color: #2ecc71;
         line-height: 1.1;
@@ -208,12 +209,12 @@
         z-index: 2;
       }
 
-      /* Tags with Authentic Street Graffiti Styling */
+      /* Tags with Compact Street Graffiti Styling */
       .tag-bubble {
         position: relative;
         z-index: 3;
-        max-width: 88%;
-        padding: 2px 6px;
+        max-width: 90%;
+        padding: 2px 4px;
         border-radius: 6px;
         transform-origin: center center;
         animation: sprayIn 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -226,43 +227,43 @@
 
       .tag-text {
         font-family: 'Dela Gothic One', 'Russo One', Impact, sans-serif;
-        font-size: 24px;
-        line-height: 1.25;
+        font-size: 16px;
+        line-height: 1.22;
         letter-spacing: 0.5px;
         word-break: break-word;
         text-transform: uppercase;
         text-shadow:
-          0 0 8px currentColor,
-          0 0 18px currentColor,
-          2px 2px 0 #000,
-          -1.5px -1.5px 0 #000,
-          1.5px -1.5px 0 #000,
-          -1.5px 1.5px 0 #000,
-          0 2px 0 #000,
-          2px 0 0 #000;
+          0 0 6px currentColor,
+          0 0 14px currentColor,
+          1.5px 1.5px 0 #000,
+          -1px -1px 0 #000,
+          1px -1px 0 #000,
+          -1px 1px 0 #000,
+          0 1.5px 0 #000,
+          1.5px 0 0 #000;
       }
 
       .tag-meta {
         display: flex;
         align-items: center;
-        gap: 6px;
-        font-size: 11px;
-        color: rgba(255,255,255,0.8);
-        margin-top: 4px;
+        gap: 4px;
+        font-size: 9px;
+        color: rgba(255,255,255,0.75);
+        margin-top: 2px;
         font-weight: 600;
       }
 
       .tag-author {
-        color: rgba(255,255,255,0.9);
+        color: rgba(255,255,255,0.85);
         font-family: 'JetBrains Mono', monospace;
         background: rgba(0,0,0,0.65);
-        padding: 1px 7px;
-        border-radius: 4px;
+        padding: 1px 5px;
+        border-radius: 3px;
         border: 1px solid rgba(255,255,255,0.15);
       }
 
       @keyframes sprayIn {
-        0% { opacity: 0; transform: scale(0.6) rotate(-5deg); filter: blur(5px); }
+        0% { opacity: 0; transform: scale(0.6) rotate(-5deg); filter: blur(4px); }
         100% { opacity: 1; transform: scale(1); }
       }
 
@@ -273,34 +274,84 @@
         z-index: 3;
         padding: 15px;
       }
-      .empty-state h3 { font-size: 17px; margin-bottom: 4px; color: rgba(255,255,255,0.7); }
-      .empty-state p { font-size: 13px; line-height: 1.4; }
+      .empty-state h3 { font-size: 16px; margin-bottom: 4px; color: rgba(255,255,255,0.7); }
+      .empty-state p { font-size: 12px; line-height: 1.4; }
 
-      /* Bottom Control Panel */
+      /* Single-Row Slim Bottom Control Panel */
       .control-panel {
         flex-shrink: 0;
-        background: #120604;
+        background: #110504;
         border-top: 1.5px solid #3d1410;
-        padding: 8px 10px max(14px, env(safe-area-inset-bottom, 14px)) 10px;
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
+        padding: 6px 10px max(10px, env(safe-area-inset-bottom, 10px)) 10px;
+        position: relative;
         z-index: 50;
         box-shadow: 0 -6px 25px rgba(0,0,0,0.9);
       }
 
-      .palette-row {
+      /* Popup Palette */
+      .palette-popover {
+        position: absolute;
+        bottom: calc(100% + 8px);
+        left: 10px;
+        background: #180907;
+        border: 1.5px solid #4a1914;
+        border-radius: 20px;
+        padding: 6px 10px;
+        display: none;
+        align-items: center;
+        gap: 10px;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.95);
+        animation: popUp 0.15s ease-out forwards;
+        z-index: 60;
+      }
+
+      .palette-popover.open {
+        display: flex;
+      }
+
+      @keyframes popUp {
+        from { opacity: 0; transform: translateY(6px) scale(0.95); }
+        to { opacity: 1; transform: translateY(0) scale(1); }
+      }
+
+      .input-row {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+      }
+
+      .color-trigger-btn {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background: #000;
+        border: 2px solid rgba(255,255,255,0.25);
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 12px;
+        cursor: pointer;
+        padding: 0;
+        flex-shrink: 0;
+        transition: border-color 0.2s, transform 0.1s;
+      }
+
+      .color-trigger-btn:active {
+        transform: scale(0.92);
+      }
+
+      .color-dot {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        box-shadow: 0 0 10px currentColor;
+        transition: background-color 0.2s, box-shadow 0.2s;
       }
 
       .color-can {
-        width: 25px;
-        height: 25px;
+        width: 26px;
+        height: 26px;
         border-radius: 50%;
-        border: 2px solid rgba(255,255,255,0.25);
+        border: 2px solid rgba(255,255,255,0.3);
         cursor: pointer;
         position: relative;
         transition: transform 0.15s, border-color 0.15s, box-shadow 0.15s;
@@ -318,37 +369,31 @@
       }
 
       .color-can.active {
-        transform: scale(1.35);
+        transform: scale(1.3);
         border-color: #fff;
-        box-shadow: 0 0 14px currentColor;
-      }
-
-      .input-row {
-        display: flex;
-        gap: 8px;
-        align-items: center;
+        box-shadow: 0 0 12px currentColor;
       }
 
       .spray-input {
         flex: 1;
-        height: 44px;
+        height: 38px;
         background: #000;
         border: 1.5px solid #4a1914;
         border-radius: 8px;
         padding: 0 12px;
         color: #fff;
-        font-size: 15px;
+        font-size: 14px;
         font-weight: 500;
         outline: none;
       }
 
       .spray-input:focus {
         border-color: var(--accent);
-        box-shadow: 0 0 12px var(--accent);
+        box-shadow: 0 0 10px var(--accent);
       }
 
       .spray-btn {
-        height: 44px;
+        height: 38px;
         padding: 0 16px;
         border-radius: 8px;
         border: none;
@@ -356,17 +401,18 @@
         color: #fff;
         font-family: 'JetBrains Mono', monospace;
         font-weight: 900;
-        font-size: 14px;
+        font-size: 13px;
         display: flex;
         align-items: center;
-        gap: 6px;
+        justify-content: center;
         cursor: pointer;
-        box-shadow: 0 4px 18px var(--accent);
+        box-shadow: 0 4px 14px var(--accent);
         transition: transform 0.1s, background 0.2s, box-shadow 0.2s;
+        letter-spacing: 0.5px;
       }
 
       .spray-btn:active {
-        transform: scale(0.96);
+        transform: scale(0.95);
       }
     `;
     document.head.appendChild(style);
@@ -440,33 +486,55 @@
         </div>
 
         <canvas id="particle-canvas"></canvas>
-        <div id="tags-container" style="display:flex;flex-direction:column;gap:14px;z-index:3;"></div>
+        <div id="tags-container" style="display:flex;flex-direction:column;gap:12px;z-index:3;"></div>
       </div>
 
       <div class="control-panel">
-        <div class="palette-row" id="palette-bar"></div>
+        <div class="palette-popover" id="palette-popover">
+          <div class="palette-row" id="palette-bar"></div>
+        </div>
         <form class="input-row" id="spray-form">
-          <input class="spray-input" id="spray-text" maxlength="80" placeholder="Нацарапать на кирпичах..." autocomplete="off">
-          <button type="submit" class="spray-btn" id="spray-btn">
-            <span>ПШИК</span>
-            <span>🎨</span>
+          <button type="button" class="color-trigger-btn" id="color-trigger" title="Выбрать цвет краски">
+            <div class="color-dot" id="active-color-dot"></div>
           </button>
+          <input class="spray-input" id="spray-text" maxlength="80" placeholder="Нацарапать на кирпичах..." autocomplete="off">
+          <button type="submit" class="spray-btn" id="spray-btn">ПШИК</button>
         </form>
       </div>
     `;
 
     // Palette & Dynamic Spray Button Color
     const paletteBar = document.getElementById('palette-bar');
+    const palettePopover = document.getElementById('palette-popover');
+    const colorTrigger = document.getElementById('color-trigger');
+    const activeColorDot = document.getElementById('active-color-dot');
     const sprayBtn = document.getElementById('spray-btn');
 
     function updateAccent(colorHex) {
       selectedColor = colorHex;
       document.documentElement.style.setProperty('--accent', colorHex);
+      if (activeColorDot) {
+        activeColorDot.style.backgroundColor = colorHex;
+        activeColorDot.style.color = colorHex;
+      }
       if (sprayBtn) {
         sprayBtn.style.background = `linear-gradient(135deg, ${colorHex} 0%, #150505 160%)`;
-        sprayBtn.style.boxShadow = `0 4px 18px ${colorHex}66`;
+        sprayBtn.style.boxShadow = `0 4px 16px ${colorHex}66`;
       }
     }
+
+    // Toggle popover
+    colorTrigger.onclick = (e) => {
+      e.stopPropagation();
+      palettePopover.classList.toggle('open');
+      try { window.gem?.haptic?.('light'); } catch(e){}
+    };
+
+    document.addEventListener('click', (e) => {
+      if (!palettePopover.contains(e.target) && e.target !== colorTrigger) {
+        palettePopover.classList.remove('open');
+      }
+    });
 
     PALETTE.forEach(c => {
       const btn = document.createElement('div');
@@ -474,10 +542,12 @@
       btn.style.backgroundColor = c.hex;
       btn.style.color = c.hex;
       btn.title = c.name;
-      btn.onclick = () => {
+      btn.onclick = (e) => {
+        e.stopPropagation();
         document.querySelectorAll('.color-can').forEach(el => el.classList.remove('active'));
         btn.classList.add('active');
         updateAccent(c.hex);
+        palettePopover.classList.remove('open');
         try { window.gem?.haptic?.('select'); } catch(e){}
       };
       paletteBar.appendChild(btn);
@@ -510,15 +580,15 @@
     setTimeout(resizeCanvas, 150);
 
     function spawnSprayParticles(x, y, color) {
-      for (let i = 0; i < 40; i++) {
+      for (let i = 0; i < 35; i++) {
         const angle = Math.random() * Math.PI * 2;
         const speed = Math.random() * 5 + 2;
         particles.push({
           x: x || canvas.width / 2,
-          y: y || canvas.height - 80,
+          y: y || canvas.height - 60,
           vx: Math.cos(angle) * speed,
           vy: Math.sin(angle) * speed - 1.5,
-          radius: Math.random() * 3 + 1,
+          radius: Math.random() * 2.5 + 1,
           color: color,
           alpha: 1,
           decay: Math.random() * 0.03 + 0.02
@@ -550,7 +620,7 @@
     }
     requestAnimationFrame(loopParticles);
 
-    // Tags rendering (clean, no awkward drip slashes)
+    // Tags rendering
     const container = document.getElementById('tags-container');
     const wallView = document.getElementById('wall-view');
 
@@ -568,7 +638,7 @@
 
       container.innerHTML = tags.map((t, idx) => {
         const isRight = idx % 2 === 1;
-        const rotation = ((idx * 7) % 9 - 4) * 1.5;
+        const rotation = ((idx * 7) % 9 - 4) * 1.4;
         const col = t.color || PALETTE[idx % PALETTE.length].hex;
         const author = t.name || 'Аноним';
         const text = t.text || t.label || '';
