@@ -9,7 +9,7 @@
     // Inject styles
     const style = document.createElement('style');
     style.textContent = `
-      @import url('https://fonts.googleapis.com/css2?family=Rubik+Dirt&family=Russo+One&family=JetBrains+Mono:wght@700;900&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Russo+One&family=JetBrains+Mono:wght@700;900&display=swap');
 
       :root {
         --bg: #080202;
@@ -225,14 +225,21 @@
       }
 
       .tag-text {
-        font-family: 'Rubik Dirt', 'Russo One', Impact, sans-serif;
+        font-family: 'Dela Gothic One', 'Russo One', Impact, sans-serif;
         font-size: 24px;
-        line-height: 1.2;
-        letter-spacing: 1px;
+        line-height: 1.25;
+        letter-spacing: 0.5px;
         word-break: break-word;
         text-transform: uppercase;
-        -webkit-text-stroke: 1.2px rgba(0, 0, 0, 0.9);
-        filter: drop-shadow(2px 2px 0px rgba(0,0,0,0.95)) drop-shadow(0 0 12px currentColor);
+        text-shadow:
+          0 0 8px currentColor,
+          0 0 18px currentColor,
+          2px 2px 0 #000,
+          -1.5px -1.5px 0 #000,
+          1.5px -1.5px 0 #000,
+          -1.5px 1.5px 0 #000,
+          0 2px 0 #000,
+          2px 0 0 #000;
       }
 
       .tag-meta {
