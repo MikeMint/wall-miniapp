@@ -213,22 +213,16 @@
       .tag-bubble {
         position: relative;
         z-index: 3;
-        max-width: 90%;
+        max-width: 86%;
         padding: 2px 4px;
-        border-radius: 6px;
         transform-origin: center center;
         animation: sprayIn 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      }
-
-      .tag-text-wrap {
-        position: relative;
         display: inline-block;
       }
 
       .tag-text {
         font-family: 'Dela Gothic One', 'Russo One', Impact, sans-serif;
-        font-size: 16px;
-        line-height: 1.22;
+        line-height: 1.2;
         letter-spacing: 0.5px;
         word-break: break-word;
         text-transform: uppercase;
@@ -243,23 +237,15 @@
           1.5px 0 0 #000;
       }
 
-      .tag-meta {
-        display: flex;
-        align-items: center;
-        gap: 4px;
-        font-size: 9px;
-        color: rgba(255,255,255,0.75);
-        margin-top: 2px;
-        font-weight: 600;
-      }
-
-      .tag-author {
-        color: rgba(255,255,255,0.85);
+      .tag-sig {
         font-family: 'JetBrains Mono', monospace;
-        background: rgba(0,0,0,0.65);
-        padding: 1px 5px;
-        border-radius: 3px;
-        border: 1px solid rgba(255,255,255,0.15);
+        font-size: 10px;
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.55);
+        letter-spacing: 0.3px;
+        text-shadow: 1px 1px 2px #000;
+        margin-top: 1px;
+        display: block;
       }
 
       @keyframes sprayIn {
@@ -636,23 +622,34 @@
         return;
       }
 
+      const scatterOffsets = [4, 42, 14, 52, 24, 8, 38, 18, 46];
+      const angles = [-4.5, 3.5, -2, 5, -3.5, 2, -5, 4, -2.5];
+
       container.innerHTML = tags.map((t, idx) => {
-        const isRight = idx % 2 === 1;
-        const rotation = ((idx * 7) % 9 - 4) * 1.4;
+        const text = t.text || t.label || '';
+        const len = text.length;
+
+        // Dynamic font sizing: short tags are punchy, long phrases stay compact
+        let fontSize = 16;
+        if (len <= 4) fontSize = 23;
+        else if (len <= 10) fontSize = 19;
+        else if (len <= 22) fontSize = 16;
+        else fontSize = 13.5;
+
+        // Organic horizontal positioning across the entire wall
+        let maxOffset = len > 22 ? 8 : (len > 12 ? 22 : 46);
+        const leftOffset = Math.min(maxOffset, scatterOffsets[idx % scatterOffsets.length]);
+        const rotation = angles[idx % angles.length];
+
         const col = t.color || PALETTE[idx % PALETTE.length].hex;
         const author = t.name || 'Аноним';
-        const text = t.text || t.label || '';
 
         return `
-          <div class="tag-bubble" style="align-self: ${isRight ? 'flex-end' : 'flex-start'}; transform: rotate(${rotation}deg);">
-            <div class="tag-text-wrap">
-              <div class="tag-text" style="color: ${col};">
-                ${esc(text)}
-              </div>
+          <div class="tag-bubble" style="margin-left: ${leftOffset}%; transform: rotate(${rotation}deg);">
+            <div class="tag-text" style="color: ${col}; font-size: ${fontSize}px;">
+              ${esc(text)}
             </div>
-            <div class="tag-meta" style="justify-content: ${isRight ? 'flex-end' : 'flex-start'};">
-              <span class="tag-author">— ${esc(author)}</span>
-            </div>
+            <div class="tag-sig">~ ${esc(author)}</div>
           </div>
         `;
       }).join('');
@@ -695,6 +692,10 @@
       const myName = window.gem?.user?.name || 'Я';
       tags.push({ text: val, name: myName, color: selectedColor });
       renderTags();
+
+      // Auto-cycle color for next spray to keep the wall colorful and diverse
+      const nextIdx = (PALETTE.findIndex(c => c.hex === selectedColor) + 1) % PALETTE.length;
+      updateAccent(PALETTE[nextIdx].hex);
 
       if (window.gem?.call) {
         window.gem.call('/', { msg: val, color: selectedColor }).then(mergeServerData);
