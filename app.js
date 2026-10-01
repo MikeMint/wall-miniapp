@@ -16,6 +16,68 @@
     // Inject styles
     const style = document.createElement('style');
     style.textContent = `
+      @import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Russo+One&family=JetBrains+Mono:wght@700;800;900&display=swap');
+
+      :root {
+        --bg: #0d0605;
+        --mortar: #120b0a;
+        --accent: #ff3366;
+      }
+
+      * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+      html, body {
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+        background: var(--bg);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        color: #fff;
+      }
+
+      #root {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        max-width: 480px;
+        margin: 0 auto;
+        background: #000;
+        overflow: hidden;
+        box-shadow: 0 0 50px rgba(0, 0, 0, 0.95);
+      }
+
+      /* Warning tape subheader */
+      .top-tape {
+        flex-shrink: 0;
+        height: 24px;
+        background: repeating-linear-gradient(45deg, #f39c12 0 10px, #151515 10px 20px);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.8);
+        z-index: 10;
+        border-bottom: 2px solid #000;
+      }
+
+      .tape-badge {
+        background: #111;
+        color: #f1c40f;
+        font-family: 'JetBrains Mono', monospace;
+        font-weight: 900;
+        font-size: 10px;
+        padding: 1px 6px;
+        border-radius: 3px;
+        letter-spacing: 0.5px;
+        border: 1px solid #f39c1255;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+
       /* /myapps Top Pill Button */
       .myapps-badge-btn {
         background: #190a09;
@@ -49,6 +111,29 @@
         font-weight: 900;
         padding: 0 4px;
         border-radius: 6px;
+      }
+
+      /* Expand/Fullscreen Toggle Button */
+      .expand-toggle-btn {
+        background: #190a09;
+        border: 1px solid rgba(241, 196, 15, 0.4);
+        border-radius: 4px;
+        height: 20px;
+        min-width: 22px;
+        padding: 0 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #f1c40f;
+        font-size: 11px;
+        cursor: pointer;
+        outline: none;
+        transition: transform 0.1s, background 0.15s, border-color 0.15s;
+      }
+      .expand-toggle-btn:active {
+        transform: scale(0.9);
+        background: #331505;
+        border-color: #f1c40f;
       }
 
       /* /myapps Modal Overlay */
@@ -105,255 +190,7 @@
       }
       .myapps-modal-close:active { opacity: 0.85; }
 
-      
-      /* Expand/Fullscreen Toggle Button */
-      .expand-toggle-btn {
-        background: #190a09;
-        border: 1px solid rgba(241, 196, 15, 0.4);
-        border-radius: 4px;
-        height: 20px;
-        min-width: 22px;
-        padding: 0 4px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #f1c40f;
-        font-size: 11px;
-        cursor: pointer;
-        outline: none;
-        transition: transform 0.1s, background 0.15s, border-color 0.15s;
-      }
-      .expand-toggle-btn:active {
-        transform: scale(0.9);
-        background: #331505;
-        border-color: #f1c40f;
-      }
-
-      /* Responsive centering for wide screens */
-      .safety-sign {
-        max-width: 460px;
-        width: 100%;
-        margin: 0 auto 2px auto;
-      }
-
-      .control-panel-inner {
-        max-width: 520px;
-        width: 100%;
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        gap: 0;
-      }
-
-      /* Seamless Continuous Marquee LED Ticker */
-      .lore-ticker {
-        flex-shrink: 0;
-        background: rgba(14, 6, 5, 0.92);
-        border: 1px solid rgba(241, 196, 15, 0.45);
-        border-radius: 5px;
-        padding: 2px 6px;
-        margin: 2px auto 4px auto;
-        width: 100%;
-        max-width: 460px;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        z-index: 4;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
-        overflow: hidden;
-      }
-      .ticker-badge {
-        color: #111;
-        background: #f1c40f;
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 8.5px;
-        font-weight: 900;
-        padding: 1px 5px;
-        border-radius: 3px;
-        flex-shrink: 0;
-        letter-spacing: 0.5px;
-      }
-      .marquee-track-wrapper {
-        flex: 1;
-        overflow: hidden;
-        white-space: nowrap;
-        position: relative;
-        mask-image: linear-gradient(90deg, transparent 0%, #000 12px, #000 calc(100% - 12px), transparent 100%);
-        -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 12px, #000 calc(100% - 12px), transparent 100%);
-      }
-      .marquee-track {
-        display: inline-flex;
-        white-space: nowrap;
-        will-change: transform;
-        animation: continuousMarquee 65s linear infinite;
-      }
-      .lore-ticker:hover .marquee-track,
-      .lore-ticker:active .marquee-track {
-        animation-play-state: paused;
-      }
-      @keyframes continuousMarquee {
-        0% { transform: translate3d(0, 0, 0); }
-        100% { transform: translate3d(-50%, 0, 0); }
-      }
-      .marquee-content {
-        display: inline-flex;
-        align-items: center;
-        white-space: nowrap;
-      }
-      .ticker-quote {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 9.5px;
-        font-weight: 700;
-        color: #f1c40f;
-        letter-spacing: 0.3px;
-        padding: 0 8px;
-      }
-      .ticker-sep {
-        color: rgba(241, 196, 15, 0.4);
-        font-size: 10px;
-        padding: 0 4px;
-      }
-
-
-      /* Horizontal Quick Stamps Chips */
-      .quick-stamps-bar {
-        overflow-x: auto;
-        white-space: nowrap;
-        padding: 0 0 6px 0;
-        margin-bottom: 2px;
-        display: flex;
-        gap: 6px;
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-      }
-      .quick-stamps-bar::-webkit-scrollbar { display: none; }
-      .stamp-chip {
-        background: #1e0d0a;
-        border: 1px solid #5a1c15;
-        color: #f1f2f6;
-        font-family: 'JetBrains Mono', monospace;
-        font-weight: 800;
-        font-size: 9.5px;
-        padding: 5px 11px;
-        border-radius: 14px;
-        cursor: pointer;
-        flex-shrink: 0;
-        letter-spacing: 0.3px;
-        transition: all 0.15s;
-        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.6);
-      }
-      .stamp-chip:active {
-        background: #4a1712;
-        border-color: var(--accent);
-        color: #fff;
-        transform: scale(0.93);
-        box-shadow: 0 0 12px var(--accent);
-      }
-
-      /* Tag Footer with bright, punchy Author Badge and AI Meta */
-      .tag-footer-row {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        margin-top: 3px;
-        background: rgba(0, 0, 0, 0.78);
-        border: 1px solid rgba(255, 255, 255, 0.22);
-        border-radius: 4px;
-        padding: 2px 6px;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.85);
-        white-space: nowrap;
-      }
-      .tag-sig {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 8.5px;
-        font-weight: 800;
-        color: #ffffff;
-        letter-spacing: 0.3px;
-        text-shadow: 0 0 2px #000;
-      }
-      .tag-ai-meta {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 8px;
-        font-weight: 700;
-        color: #f1c40f;
-        letter-spacing: 0.2px;
-        text-shadow: 0 0 4px rgba(241, 196, 15, 0.5);
-      }
-
-      @import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Russo+One&family=JetBrains+Mono:wght@700;900&display=swap');
-
-      :root {
-        --bg: #0d0605;
-        --mortar: #120b0a;
-        --accent: #ff3366;
-      }
-
-      * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-      html, body {
-        height: 100%;
-        width: 100%;
-        overflow: hidden;
-        background: var(--bg);
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-        color: #fff;
-      }
-
-      #root {
-        position: fixed;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        display: flex;
-        flex-direction: column;
-        max-width: 480px;
-        margin: 0 auto;
-        background: #000;
-        overflow: hidden;
-        box-shadow: 0 0 50px rgba(0, 0, 0, 0.9);
-      }
-
-      /* Warning tape subheader */
-      .top-tape {
-        flex-shrink: 0;
-        height: 24px;
-        background: repeating-linear-gradient(45deg, #f39c12 0 10px, #151515 10px 20px);
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 10px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.8);
-        z-index: 10;
-        border-bottom: 2px solid #000;
-      }
-
-      .tape-badge {
-        background: #111;
-        color: #f1c40f;
-        font-family: 'JetBrains Mono', monospace;
-        font-weight: 900;
-        font-size: 10px;
-        padding: 1px 6px;
-        border-radius: 3px;
-        letter-spacing: 0.5px;
-        border: 1px solid #f39c1255;
-        display: flex;
-        align-items: center;
-        gap: 5px;
-      }
-
-      .tape-status {
-        color: #111;
-        background: #f1c40f;
-        font-family: 'JetBrains Mono', monospace;
-        font-weight: 900;
-        font-size: 9px;
-        padding: 1px 5px;
-        border-radius: 3px;
-        letter-spacing: 0.5px;
-      }
-
-      /* Hyper-Realistic Running Bond Brick Wall Viewport */
+      /* Authentic Brick Wall Viewport */
       .wall-viewport {
         flex: 1;
         min-height: 0;
@@ -391,7 +228,7 @@
         gap: 2px;
         margin: 0 auto 2px auto;
         width: 100%;
-        max-width: 360px;
+        max-width: 460px;
         z-index: 4;
       }
 
@@ -477,6 +314,75 @@
         color: #fff;
       }
 
+      /* Seamless Continuous Marquee LED Ticker */
+      .lore-ticker {
+        flex-shrink: 0;
+        background: rgba(14, 6, 5, 0.92);
+        border: 1px solid rgba(241, 196, 15, 0.45);
+        border-radius: 5px;
+        padding: 2px 6px;
+        margin: 2px auto 4px auto;
+        width: 100%;
+        max-width: 460px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        z-index: 4;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+        overflow: hidden;
+      }
+      .ticker-badge {
+        color: #111;
+        background: #f1c40f;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 8.5px;
+        font-weight: 900;
+        padding: 1px 5px;
+        border-radius: 3px;
+        flex-shrink: 0;
+        letter-spacing: 0.5px;
+      }
+      .marquee-track-wrapper {
+        flex: 1;
+        overflow: hidden;
+        white-space: nowrap;
+        position: relative;
+        mask-image: linear-gradient(90deg, transparent 0%, #000 12px, #000 calc(100% - 12px), transparent 100%);
+        -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 12px, #000 calc(100% - 12px), transparent 100%);
+      }
+      .marquee-track {
+        display: inline-flex;
+        white-space: nowrap;
+        will-change: transform;
+        animation: continuousMarquee 65s linear infinite;
+      }
+      .lore-ticker:hover .marquee-track,
+      .lore-ticker:active .marquee-track {
+        animation-play-state: paused;
+      }
+      @keyframes continuousMarquee {
+        0% { transform: translate3d(0, 0, 0); }
+        100% { transform: translate3d(-50%, 0, 0); }
+      }
+      .marquee-content {
+        display: inline-flex;
+        align-items: center;
+        white-space: nowrap;
+      }
+      .ticker-quote {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 9.5px;
+        font-weight: 700;
+        color: #f1c40f;
+        letter-spacing: 0.3px;
+        padding: 0 8px;
+      }
+      .ticker-sep {
+        color: rgba(241, 196, 15, 0.4);
+        font-size: 10px;
+        padding: 0 4px;
+      }
+
       /* Particle canvas for aerosol mist */
       #particle-canvas {
         position: absolute;
@@ -489,8 +395,8 @@
       .tag-bubble {
         position: relative;
         z-index: 3;
-        max-width: 80%;
-        padding: 1px 3px;
+        max-width: 82%;
+        padding: 3px 6px;
         transform-origin: center center;
         animation: sprayIn 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         display: inline-block;
@@ -513,15 +419,35 @@
           1px 0 0 #000;
       }
 
+      /* Bright, punchy Author Badge and AI Meta */
+      .tag-footer-row {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin-top: 3px;
+        background: rgba(10, 4, 3, 0.88);
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        border-radius: 4px;
+        padding: 2px 7px;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.9);
+        white-space: nowrap;
+        backdrop-filter: blur(2px);
+      }
       .tag-sig {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 9px;
+        font-weight: 900;
+        color: #ffffff;
+        letter-spacing: 0.4px;
+        text-shadow: 0 0 3px #000;
+      }
+      .tag-ai-meta {
         font-family: 'JetBrains Mono', monospace;
         font-size: 8px;
         font-weight: 700;
-        color: rgba(255, 255, 255, 0.5);
+        color: #ffd32a;
         letter-spacing: 0.2px;
-        text-shadow: 1px 1px 2px #000;
-        margin-top: 1px;
-        display: block;
+        text-shadow: 0 0 4px rgba(255, 211, 42, 0.6);
       }
 
       @keyframes sprayIn {
@@ -542,23 +468,73 @@
       /* Industrial Polished Bottom Control Panel */
       .control-panel {
         flex-shrink: 0;
-        background: linear-gradient(180deg, #180907 0%, #0d0403 100%);
-        border-top: 1.5px solid #4a1712;
+        background: linear-gradient(180deg, #1a0a07 0%, #0c0303 100%);
+        border-top: 1.5px solid rgba(255, 71, 87, 0.35);
         padding: 8px 12px max(12px, env(safe-area-inset-bottom, 12px)) 12px;
         position: relative;
         z-index: 50;
-        box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.95);
+        box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.95);
+      }
+
+      .control-panel-inner {
+        max-width: 520px;
+        width: 100%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+
+      /* Horizontal Quick Stamps Chips */
+      .quick-stamps-bar {
+        overflow-x: auto;
+        white-space: nowrap;
+        padding: 2px 4px 8px 4px;
+        margin-bottom: 3px;
+        display: flex;
+        gap: 7px;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        position: relative;
+        mask-image: linear-gradient(90deg, transparent 0%, #000 12px, #000 calc(100% - 12px), transparent 100%);
+        -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 12px, #000 calc(100% - 12px), transparent 100%);
+      }
+      .quick-stamps-bar::-webkit-scrollbar { display: none; }
+      .stamp-chip {
+        background: linear-gradient(180deg, #24100c 0%, #150604 100%);
+        border: 1px solid rgba(255, 107, 107, 0.38);
+        color: #f1f2f6;
+        font-family: 'JetBrains Mono', monospace;
+        font-weight: 800;
+        font-size: 9.5px;
+        padding: 5px 12px;
+        border-radius: 12px;
+        cursor: pointer;
+        flex-shrink: 0;
+        letter-spacing: 0.3px;
+        transition: transform 0.12s, border-color 0.15s, box-shadow 0.15s, background 0.15s;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+      }
+      .stamp-chip:active {
+        background: #3d1410;
+        border-color: var(--accent);
+        box-shadow: 0 0 14px var(--accent);
+        color: #fff;
+        transform: scale(0.93);
       }
 
       /* Popup Palette */
       .palette-popover {
         position: absolute;
-        bottom: calc(100% + 8px);
-        left: 10px;
+        bottom: calc(100% + 10px);
+        left: 12px;
         background: #180907;
         border: 1.5px solid #4a1914;
         border-radius: 20px;
-        padding: 6px 10px;
+        padding: 6px 12px;
         display: none;
         align-items: center;
         gap: 10px;
@@ -582,11 +558,12 @@
         align-items: center;
       }
 
+      /* Spray Can Nozzle Button */
       .color-trigger-btn {
-        width: 40px;
-        height: 40px;
+        width: 42px;
+        height: 42px;
         border-radius: 50%;
-        background: radial-gradient(circle at 35% 35%, #2a2a2a, #0a0a0a);
+        background: radial-gradient(circle at 35% 35%, #3a3a3a 0%, #1a1a1a 60%, #0a0a0a 100%);
         border: 2px solid rgba(255, 255, 255, 0.35);
         display: flex;
         align-items: center;
@@ -594,10 +571,18 @@
         cursor: pointer;
         padding: 0;
         flex-shrink: 0;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8), inset 0 1px 2px rgba(255, 255, 255, 0.3);
-        transition: transform 0.15s, border-color 0.2s;
+        position: relative;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8), inset 0 2px 3px rgba(255, 255, 255, 0.3), inset 0 -2px 4px rgba(0, 0, 0, 0.8);
+        transition: transform 0.12s, border-color 0.2s;
       }
-
+      .color-trigger-btn::before {
+        content: '';
+        position: absolute;
+        inset: 4px;
+        border-radius: 50%;
+        border: 1px dashed rgba(255, 255, 255, 0.2);
+        pointer-events: none;
+      }
       .color-trigger-btn:active {
         transform: scale(0.92);
       }
@@ -606,8 +591,9 @@
         width: 20px;
         height: 20px;
         border-radius: 50%;
-        box-shadow: 0 0 12px currentColor, inset 0 1px 3px rgba(255, 255, 255, 0.5);
+        box-shadow: 0 0 14px currentColor, inset 0 2px 4px rgba(255, 255, 255, 0.6);
         transition: background-color 0.2s, box-shadow 0.2s;
+        border: 1px solid rgba(0, 0, 0, 0.4);
       }
 
       .color-can {
@@ -637,47 +623,51 @@
         box-shadow: 0 0 12px currentColor;
       }
 
+      /* Industrial Spray Input */
       .spray-input {
         flex: 1;
-        height: 38px;
-        background: #000;
-        border: 1.5px solid #4a1914;
+        height: 42px;
+        background: #090403;
+        border: 1.5px solid #3d1410;
         border-radius: 8px;
         padding: 0 12px;
         color: #fff;
-        font-size: 14px;
-        font-weight: 500;
+        font-family: 'JetBrains Mono', -apple-system, sans-serif;
+        font-size: 13px;
         outline: none;
+        transition: border-color 0.2s, box-shadow 0.2s;
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.7);
       }
 
       .spray-input:focus {
         border-color: var(--accent);
-        box-shadow: 0 0 10px var(--accent);
+        box-shadow: 0 0 14px rgba(255, 71, 87, 0.35), inset 0 2px 4px rgba(0, 0, 0, 0.7);
       }
 
+      /* Industrial Spray Button */
       .spray-btn {
-        height: 38px;
-        padding: 0 16px;
-        border-radius: 8px;
+        height: 42px;
+        padding: 0 20px;
+        background: linear-gradient(135deg, var(--accent) 0%, #150505 160%);
         border: none;
-        background: linear-gradient(135deg, var(--accent) 0%, #111 150%);
+        border-radius: 8px;
         color: #fff;
-        font-family: 'JetBrains Mono', monospace;
-        font-weight: 900;
+        font-family: 'Russo One', sans-serif;
         font-size: 13px;
+        letter-spacing: 0.8px;
+        cursor: pointer;
+        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.6);
+        transition: transform 0.1s, opacity 0.15s, box-shadow 0.2s;
+        flex-shrink: 0;
         display: flex;
         align-items: center;
         justify-content: center;
-        cursor: pointer;
-        box-shadow: 0 4px 14px var(--accent);
-        transition: transform 0.1s, background 0.2s, box-shadow 0.2s;
-        letter-spacing: 0.5px;
       }
 
       .spray-btn:active {
-        transform: scale(0.95);
-      }
-    `;
+        transform: scale(0.94);
+        opacity: 0.9;
+      }`;
     document.head.appendChild(style);
 
     const PALETTE = [
