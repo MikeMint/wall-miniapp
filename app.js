@@ -489,75 +489,149 @@
         max-width: 520px;
         width: 100%;
         margin: 0 auto;
+        position: relative;
         display: flex;
         flex-direction: column;
         gap: 0;
       }
 
-      /* Horizontal Quick Stamps Chips */
-      .quick-stamps-bar {
-        overflow-x: auto;
-        white-space: nowrap;
-        padding: 2px 4px 8px 4px;
-        margin-bottom: 3px;
-        display: flex;
-        gap: 7px;
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-        position: relative;
-        mask-image: linear-gradient(90deg, transparent 0%, #000 12px, #000 calc(100% - 12px), transparent 100%);
-        -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 12px, #000 calc(100% - 12px), transparent 100%);
+      /* Horizontal Spray Cans Palette Shelf */
+      .palette-shelf {
+        display: none;
+        padding: 4px 2px 10px 2px;
+        animation: popUp 0.15s ease-out forwards;
       }
-      .quick-stamps-bar::-webkit-scrollbar { display: none; }
-      .stamp-chip {
-        background: linear-gradient(180deg, #24100c 0%, #150604 100%);
-        border: 1px solid rgba(255, 107, 107, 0.38);
+      .palette-shelf.open {
+        display: block;
+      }
+      .palette-cans-grid {
+        display: flex;
+        justify-content: space-between;
+        gap: 6px;
+      }
+      .spray-can-card {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: linear-gradient(180deg, #24110e 0%, #120504 100%);
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        border-radius: 8px;
+        padding: 6px 2px 5px 2px;
+        cursor: pointer;
+        transition: transform 0.12s, border-color 0.15s, box-shadow 0.15s;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.6);
+        user-select: none;
+      }
+      .spray-can-card:active {
+        transform: scale(0.92);
+      }
+      .spray-can-card.active {
+        border-color: #fff;
+        background: linear-gradient(180deg, #381814 0%, #1c0806 100%);
+        box-shadow: 0 0 14px currentColor, 0 4px 12px rgba(0,0,0,0.8);
+        transform: translateY(-2px);
+      }
+      .can-cap-mini {
+        width: 16px;
+        height: 7px;
+        border-radius: 3px 3px 1px 1px;
+        box-shadow: inset 0 1px 2px rgba(255,255,255,0.7);
+        margin-bottom: 2px;
+      }
+      .can-body-mini {
+        width: 22px;
+        height: 20px;
+        border-radius: 3px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: inset 0 1px 3px rgba(255,255,255,0.4), 0 2px 4px rgba(0,0,0,0.5);
+      }
+      .can-label-mini {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 8.5px;
+        font-weight: 900;
+        color: #fff;
+        margin-top: 4px;
+        text-shadow: 0 1px 2px #000;
+        white-space: nowrap;
+      }
+
+      /* Quotes Popover Menu */
+      .quotes-popover {
+        position: absolute;
+        bottom: calc(100% + 8px);
+        left: 0;
+        right: 0;
+        background: #160705;
+        border: 1.5px solid #4a1914;
+        border-radius: 12px;
+        padding: 10px;
+        display: none;
+        flex-direction: column;
+        gap: 8px;
+        box-shadow: 0 -8px 30px rgba(0,0,0,0.95);
+        z-index: 70;
+        animation: popUp 0.15s ease-out forwards;
+        max-height: 250px;
+        overflow-y: auto;
+      }
+      .quotes-popover.open {
+        display: flex;
+      }
+      .quotes-popover-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 10px;
+        font-weight: 900;
+        color: #ff6b6b;
+        letter-spacing: 0.5px;
+        border-bottom: 1px solid rgba(255, 107, 107, 0.2);
+        padding-bottom: 5px;
+      }
+      .quotes-close-btn {
+        background: transparent;
+        border: none;
+        color: #aaa;
+        font-size: 13px;
+        cursor: pointer;
+        padding: 0 4px;
+      }
+      .quotes-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 6px;
+      }
+      .quote-item-btn {
+        background: linear-gradient(180deg, #220d09 0%, #140504 100%);
+        border: 1px solid rgba(255, 107, 107, 0.25);
+        border-radius: 6px;
         color: #f1f2f6;
         font-family: 'JetBrains Mono', monospace;
-        font-weight: 800;
         font-size: 9.5px;
-        padding: 5px 12px;
-        border-radius: 12px;
+        font-weight: 800;
+        padding: 8px 6px;
+        text-align: left;
         cursor: pointer;
-        flex-shrink: 0;
-        letter-spacing: 0.3px;
-        transition: transform 0.12s, border-color 0.15s, box-shadow 0.15s, background 0.15s;
-        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.12);
-        display: inline-flex;
-        align-items: center;
-        gap: 4px;
-      }
-      .stamp-chip:active {
-        background: #3d1410;
-        border-color: var(--accent);
-        box-shadow: 0 0 14px var(--accent);
-        color: #fff;
-        transform: scale(0.93);
-      }
-
-      /* Popup Palette */
-      .palette-popover {
-        position: absolute;
-        bottom: calc(100% + 10px);
-        left: 12px;
-        background: #180907;
-        border: 1.5px solid #4a1914;
-        border-radius: 20px;
-        padding: 6px 12px;
-        display: none;
-        align-items: center;
-        gap: 10px;
-        box-shadow: 0 8px 24px rgba(0,0,0,0.95);
-        animation: popUp 0.15s ease-out forwards;
-        z-index: 60;
-      }
-
-      .palette-popover.open {
         display: flex;
+        align-items: center;
+        gap: 5px;
+        transition: background 0.12s, border-color 0.12s, transform 0.1s;
       }
+      .quote-item-btn:hover {
+        background: #33120c;
+        border-color: #ff4757;
+      }
+      .quote-item-btn:active {
+        transform: scale(0.96);
+      }
+      .q-icon { font-size: 12px; }
 
       @keyframes popUp {
-        from { opacity: 0; transform: translateY(6px) scale(0.95); }
+        from { opacity: 0; transform: translateY(6px) scale(0.96); }
         to { opacity: 1; transform: translateY(0) scale(1); }
       }
 
@@ -605,41 +679,21 @@
         border: 1px solid rgba(0, 0, 0, 0.4);
       }
 
-      .color-can {
-        width: 26px;
-        height: 26px;
-        border-radius: 50%;
-        border: 2px solid rgba(255,255,255,0.3);
-        cursor: pointer;
-        position: relative;
-        transition: transform 0.15s, border-color 0.15s, box-shadow 0.15s;
-      }
-
-      .color-can::after {
-        content: "";
-        position: absolute;
-        top: 3px;
-        left: 3px;
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-        background: rgba(255,255,255,0.5);
-      }
-
-      .color-can.active {
-        transform: scale(1.3);
-        border-color: #fff;
-        box-shadow: 0 0 12px currentColor;
-      }
-
-      /* Industrial Spray Input */
-      .spray-input {
+      /* Input with Embedded Quotes Icon */
+      .input-wrapper {
         flex: 1;
+        position: relative;
+        display: flex;
+        align-items: center;
+      }
+
+      .spray-input {
+        width: 100%;
         height: 42px;
         background: #090403;
         border: 1.5px solid #3d1410;
         border-radius: 8px;
-        padding: 0 12px;
+        padding: 0 38px 0 12px;
         color: #fff;
         font-family: 'JetBrains Mono', -apple-system, sans-serif;
         font-size: 13px;
@@ -651,6 +705,29 @@
       .spray-input:focus {
         border-color: var(--accent);
         box-shadow: 0 0 14px rgba(255, 71, 87, 0.35), inset 0 2px 4px rgba(0, 0, 0, 0.7);
+      }
+
+      .quotes-trigger-btn {
+        position: absolute;
+        right: 4px;
+        width: 32px;
+        height: 32px;
+        background: transparent;
+        border: none;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 16px;
+        transition: transform 0.12s, background 0.15s;
+        outline: none;
+      }
+      .quotes-trigger-btn:hover {
+        background: rgba(255, 255, 255, 0.08);
+      }
+      .quotes-trigger-btn:active {
+        transform: scale(0.9);
       }
 
       /* Industrial Spray Button */
@@ -680,12 +757,12 @@
     document.head.appendChild(style);
 
     const PALETTE = [
-      { hex: '#ff3366', name: 'Cyber Red' },
-      { hex: '#00ff88', name: 'Acid Green' },
-      { hex: '#00e5ff', name: 'Neon Cyan' },
-      { hex: '#ffd200', name: 'Electric Gold' },
-      { hex: '#b026ff', name: 'Ultraviolet' },
-      { hex: '#ffffff', name: 'Chalk White' }
+      { hex: '#ff3366', name: 'Коралл' },
+      { hex: '#00ff88', name: 'Лайм' },
+      { hex: '#00e5ff', name: 'Циан' },
+      { hex: '#ffd200', name: 'Каска' },
+      { hex: '#b026ff', name: 'Opus' },
+      { hex: '#ffffff', name: 'Мел' }
     ];
 
     let selectedColor = PALETTE[0].hex;
@@ -764,27 +841,41 @@
 
       <div class="control-panel">
       <div class="control-panel-inner">
-        <!-- Quick Lore Stamps -->
-        <div class="quick-stamps-bar" id="quick-stamps">
-          <button type="button" class="stamp-chip" data-tag="/myapps">/myapps</button>
-          <button type="button" class="stamp-chip" data-tag="УМНЕЕ OPUS 5">УМНЕЕ OPUS 5</button>
-          <button type="button" class="stamp-chip" data-tag="802 ОПТИМИСТА">802 ОПТИМИСТА</button>
-          <button type="button" class="stamp-chip" data-tag="ГДЕ $1?!">ГДЕ $1?!</button>
-          <button type="button" class="stamp-chip" data-tag="ТАКТИКА БЫЛА">ТАКТИКА БЫЛА</button>
-          <button type="button" class="stamp-chip" data-tag="ЗИРО РЕЗУЛЬТАТ">ЗИРО РЕЗУЛЬТАТ</button>
-          <button type="button" class="stamp-chip" data-tag="ПОРА ПОЕСТЬ НА НОЧЬ">ПОРА ПОЕСТЬ НА НОЧЬ</button>
-          <button type="button" class="stamp-chip" data-tag="ПЕЧАТАЮ МОНЕТЫ">ПЕЧАТАЮ МОНЕТЫ</button>
-          <button type="button" class="stamp-chip" data-tag="ПРОРАБ ЛЕНИТСЯ">ПРОРАБ ЛЕНИТСЯ</button>
+        <!-- Horizontal Spray Cans Palette Shelf -->
+        <div class="palette-shelf" id="palette-shelf">
+          <div class="palette-cans-grid" id="palette-cans"></div>
         </div>
 
-        <div class="palette-popover" id="palette-popover">
-          <div class="palette-row" id="palette-bar"></div>
+        <!-- Quotes Dropdown Popover -->
+        <div class="quotes-popover" id="quotes-popover">
+          <div class="quotes-popover-header">
+            <span>💬 ЦИТАТЫ ИЗ ЧАТА</span>
+            <button type="button" class="quotes-close-btn" id="quotes-close-btn">✕</button>
+          </div>
+          <div class="quotes-grid" id="quotes-grid">
+            <button type="button" class="quote-item-btn" data-quote="/myapps"><span class="q-icon">🤖</span>/myapps</button>
+            <button type="button" class="quote-item-btn" data-quote="УМНЕЕ OPUS 5"><span class="q-icon">⚡</span>УМНЕЕ OPUS 5</button>
+            <button type="button" class="quote-item-btn" data-quote="802 ОПТИМИСТА"><span class="q-icon">🚀</span>802 ОПТИМИСТА</button>
+            <button type="button" class="quote-item-btn" data-quote="ГДЕ $1?!"><span class="q-icon">💸</span>ГДЕ $1?!</button>
+            <button type="button" class="quote-item-btn" data-quote="ТАКТИКА БЫЛА"><span class="q-icon">🎯</span>ТАКТИКА БЫЛА</button>
+            <button type="button" class="quote-item-btn" data-quote="СТАБИЛЬНО НЕ ПИЛИТСЯ"><span class="q-icon">🚧</span>СТАБИЛЬНО НЕ ПИЛИТСЯ</button>
+            <button type="button" class="quote-item-btn" data-quote="42 ДНЯ БЕЗ КОММИТОВ"><span class="q-icon">⏱️</span>42 ДНЯ БЕЗ КОММИТОВ</button>
+            <button type="button" class="quote-item-btn" data-quote="МОГАДИШО: ЗОНТ НЕ БРАТЬ"><span class="q-icon">☀️</span>МОГАДИШО: ЗОНТ</button>
+            <button type="button" class="quote-item-btn" data-quote="НУ И КАК ДЕЛА?"><span class="q-icon">🧐</span>НУ И КАК ДЕЛА?</button>
+            <button type="button" class="quote-item-btn" data-quote="ФРУСТРАЦИЯ — ЗИРО"><span class="q-icon">🧊</span>ЗИРО ФРУСТРАЦИЯ</button>
+          </div>
         </div>
+
         <form class="input-row" id="spray-form">
           <button type="button" class="color-trigger-btn" id="color-trigger" title="Выбрать цвет краски">
             <div class="color-dot" id="active-color-dot"></div>
           </button>
-          <input class="spray-input" id="spray-text" maxlength="80" placeholder="Нацарапать на кирпичах..." autocomplete="off">
+          <div class="input-wrapper">
+            <input class="spray-input" id="spray-text" maxlength="80" placeholder="Нацарапать на кирпичах..." autocomplete="off">
+            <button type="button" class="quotes-trigger-btn" id="quotes-trigger-btn" title="Выбрать цитату из чата">
+              <span class="quotes-icon">💬</span>
+            </button>
+          </div>
           <button type="submit" class="spray-btn" id="spray-btn">ПШИК</button>
         </form>
       </div></div>
@@ -801,11 +892,15 @@
     `;
 
     // Palette & Dynamic Spray Button Color
-    const paletteBar = document.getElementById('palette-bar');
-    const palettePopover = document.getElementById('palette-popover');
+    const paletteShelf = document.getElementById('palette-shelf');
+    const paletteCans = document.getElementById('palette-cans');
     const colorTrigger = document.getElementById('color-trigger');
     const activeColorDot = document.getElementById('active-color-dot');
     const sprayBtn = document.getElementById('spray-btn');
+
+    const quotesPopover = document.getElementById('quotes-popover');
+    const quotesTriggerBtn = document.getElementById('quotes-trigger-btn');
+    const quotesCloseBtn = document.getElementById('quotes-close-btn');
 
     function updateAccent(colorHex) {
       selectedColor = colorHex;
@@ -818,39 +913,88 @@
         sprayBtn.style.background = `linear-gradient(135deg, ${colorHex} 0%, #150505 160%)`;
         sprayBtn.style.boxShadow = `0 4px 16px ${colorHex}66`;
       }
+      document.querySelectorAll('.spray-can-card').forEach(card => {
+        const isCur = card.getAttribute('data-color') === colorHex;
+        card.classList.toggle('active', isCur);
+      });
     }
 
-    // Toggle popover
-    colorTrigger.onclick = (e) => {
-      e.stopPropagation();
-      palettePopover.classList.toggle('open');
-      try { window.gem?.haptic?.('light'); } catch(e){}
-    };
+    // Toggle Palette Shelf
+    if (colorTrigger) {
+      colorTrigger.onclick = (e) => {
+        e.stopPropagation();
+        if (quotesPopover) quotesPopover.classList.remove('open');
+        paletteShelf.classList.toggle('open');
+        try { window.gem?.haptic?.('light'); } catch(e){}
+      };
+    }
 
+    // Toggle Quotes Popover
+    if (quotesTriggerBtn) {
+      quotesTriggerBtn.onclick = (e) => {
+        e.stopPropagation();
+        if (paletteShelf) paletteShelf.classList.remove('open');
+        quotesPopover.classList.toggle('open');
+        try { window.gem?.haptic?.('light'); } catch(e){}
+      };
+    }
+
+    if (quotesCloseBtn) {
+      quotesCloseBtn.onclick = () => quotesPopover.classList.remove('open');
+    }
+
+    // Close popovers on outer click
     document.addEventListener('click', (e) => {
-      if (!palettePopover.contains(e.target) && e.target !== colorTrigger) {
-        palettePopover.classList.remove('open');
+      if (paletteShelf && !paletteShelf.contains(e.target) && e.target !== colorTrigger) {
+        paletteShelf.classList.remove('open');
+      }
+      if (quotesPopover && !quotesPopover.contains(e.target) && !quotesTriggerBtn.contains(e.target)) {
+        quotesPopover.classList.remove('open');
       }
     });
 
-    PALETTE.forEach(c => {
-      const btn = document.createElement('div');
-      btn.className = `color-can ${c.hex === selectedColor ? 'active' : ''}`;
-      btn.style.backgroundColor = c.hex;
-      btn.style.color = c.hex;
-      btn.title = c.name;
-      btn.onclick = (e) => {
-        e.stopPropagation();
-        document.querySelectorAll('.color-can').forEach(el => el.classList.remove('active'));
-        btn.classList.add('active');
-        updateAccent(c.hex);
-        palettePopover.classList.remove('open');
-        try { window.gem?.haptic?.('select'); } catch(e){}
-      };
-      paletteBar.appendChild(btn);
-    });
+    // Populate Horizontal Palette Shelf
+    if (paletteCans) {
+      paletteCans.innerHTML = '';
+      PALETTE.forEach(c => {
+        const card = document.createElement('div');
+        card.className = `spray-can-card ${c.hex === selectedColor ? 'active' : ''}`;
+        card.setAttribute('data-color', c.hex);
+        card.style.color = c.hex;
+        card.innerHTML = `
+          <div class="can-cap-mini" style="background:${c.hex}"></div>
+          <div class="can-body-mini" style="background:linear-gradient(135deg, #444, #111); border: 1px solid ${c.hex}">
+            <div style="width:6px;height:6px;border-radius:50%;background:${c.hex}"></div>
+          </div>
+          <span class="can-label-mini">${c.name}</span>
+        `;
+        card.onclick = (e) => {
+          e.stopPropagation();
+          updateAccent(c.hex);
+          paletteShelf.classList.remove('open');
+          playSpraySound();
+          try { window.gem?.haptic?.('select'); } catch(e){}
+        };
+        paletteCans.appendChild(card);
+      });
+    }
 
     updateAccent(selectedColor);
+
+    // Quotes Item Selection
+    document.querySelectorAll('.quote-item-btn').forEach(btn => {
+      btn.onclick = (e) => {
+        e.preventDefault();
+        const quote = btn.getAttribute('data-quote');
+        const input = document.getElementById('spray-text');
+        if (input && quote) {
+          input.value = quote;
+          input.focus();
+        }
+        quotesPopover.classList.remove('open');
+        try { window.gem?.haptic?.('medium'); } catch(e){}
+      };
+    });
 
     // Sound (Ball shake rattle + spray hiss)
     const playSpraySound = () => {
@@ -1011,42 +1155,38 @@
     // Merge server data without wiping local tags
     function mergeServerData(res) {
       if (!res) return;
-      const incoming = [];
-      if (Array.isArray(res.my)) {
-        incoming.push(...res.my);
-      }
-      if (Array.isArray(res.bd)) {
-        res.bd.forEach(b => {
-          let item = null;
-          if (typeof b === 'object' && b !== null) {
-            if (b.text) item = b;
-            else if (b.label) {
-              try { item = JSON.parse(b.label); } catch(e) { item = { text: b.label, name: b.name }; }
-            } else if (b.name && !b.text) {
-              try { item = JSON.parse(b.name); } catch(e) { item = { text: b.name }; }
-            }
-          }
-          if (item && item.text) incoming.push(item);
-        });
+      let incoming = [];
+      if (Array.isArray(res)) {
+        incoming = res;
+      } else if (Array.isArray(res.wall)) {
+        incoming = res.wall;
+      } else if (Array.isArray(res.my)) {
+        incoming = res.my;
       }
 
+      if (!incoming.length) return;
+
       const map = new Map();
-      // Keep existing tags first
-      tags.forEach(t => {
-        const k = (t.text || '').trim().toLowerCase();
-        if (k) map.set(k, t);
-      });
-      // Merge server tags
+      // Server items come first
       incoming.forEach(t => {
+        if (!t || !t.text) return;
         const k = (t.text || '').trim().toLowerCase();
         if (k) {
-          if (!map.has(k)) {
-            map.set(k, {
-              text: t.text,
-              name: t.name || 'Аноним',
-              color: t.color || PALETTE[map.size % PALETTE.length].hex
-            });
-          }
+          map.set(k, {
+            text: t.text,
+            name: t.name || 'Аноним',
+            color: t.color || PALETTE[map.size % PALETTE.length].hex,
+            time: t.time || Date.now()
+          });
+        }
+      });
+
+      // Keep local tags if not in server yet
+      tags.forEach(t => {
+        if (!t || !t.text) return;
+        const k = (t.text || '').trim().toLowerCase();
+        if (k && !map.has(k)) {
+          map.set(k, t);
         }
       });
 
@@ -1054,7 +1194,6 @@
       saveLocalTags(tags);
       renderTags();
     }
-
 
     // --- LORE LOGIC ---
 
@@ -1159,7 +1298,7 @@
       }
     }
 
-    // 3. Spray Action Helper (used by form and quick stamps)
+    // 3. Spray Action Helper
     function sprayTag(val) {
       if (!val) return;
       try { window.gem?.haptic?.('heavy'); } catch(e){}
@@ -1171,7 +1310,7 @@
       const myName = window.gem?.user?.name || 'Я';
       const newTag = { text: val, name: myName, color: selectedColor, time: Date.now() };
 
-      const k = val.toLowerCase();
+      const k = val.toLowerCase().trim();
       tags = tags.filter(t => (t.text || '').trim().toLowerCase() !== k);
       tags.push(newTag);
       saveLocalTags(tags);
@@ -1181,19 +1320,20 @@
       const nextIdx = (PALETTE.findIndex(c => c.hex === selectedColor) + 1) % PALETTE.length;
       updateAccent(PALETTE[nextIdx].hex);
 
+      // Broadcast to all players via Gem Live WebSocket
+      if (window._liveCh) {
+        try {
+          window._liveCh.send({ text: val, color: selectedColor, name: myName });
+        } catch(e) {}
+      }
+
+      // HTTP fallback
       if (window.gem?.call) {
-        window.gem.call('/', { msg: val, color: selectedColor, name: myName }).then(mergeServerData).catch(() => {});
+        window.gem.call('/', { msg: val, color: selectedColor, name: myName }).then(r => {
+          if (r && Array.isArray(r.wall)) mergeServerData(r.wall);
+        }).catch(() => {});
       }
     }
-
-    // 4. Quick Stamps Tap Handling
-    document.querySelectorAll('.stamp-chip').forEach(chip => {
-      chip.onclick = (e) => {
-        e.preventDefault();
-        const tagText = chip.getAttribute('data-tag');
-        if (tagText) sprayTag(tagText);
-      };
-    });
 
     // Form submit
     const form = document.getElementById('spray-form');
@@ -1207,23 +1347,45 @@
       sprayTag(val);
     };
 
-    // 1. Instant local load
-    const saved = loadLocalTags();
-    if (saved.length > 0) {
-      tags = saved;
-      renderTags();
-      if (window._INIT_DATA) mergeServerData(window._INIT_DATA);
-    } else if (window._INIT_DATA) {
-      mergeServerData(window._INIT_DATA);
-    } else {
-      tags = [...DEFAULT_COMMUNITY_TAGS];
+    // 1. Initial wall load from server _INIT_DATA or local cache
+    if (window._INIT_DATA && Array.isArray(window._INIT_DATA.wall) && window._INIT_DATA.wall.length > 0) {
+      tags = window._INIT_DATA.wall;
       saveLocalTags(tags);
       renderTags();
+    } else {
+      const saved = loadLocalTags();
+      if (saved.length > 0) {
+        tags = saved;
+        renderTags();
+        if (window._INIT_DATA) mergeServerData(window._INIT_DATA);
+      } else {
+        tags = [...DEFAULT_COMMUNITY_TAGS];
+        saveLocalTags(tags);
+        renderTags();
+      }
     }
 
-    // 2. Background server sync
+    // 2. Connect to Gem Live WebSocket Hall for Real-time Multiplayer
+    if (window.gem?.live) {
+      try {
+        window._liveCh = window.gem.live({
+          open() {},
+          message(d) {
+            if (d && Array.isArray(d.wall)) {
+              mergeServerData(d.wall);
+            } else if (d && d.newTag) {
+              mergeServerData([d.newTag]);
+            }
+          }
+        });
+      } catch(e) {}
+    }
+
+    // 3. Background server sync
     if (window.gem?.call) {
-      window.gem.call('/', { load: 1 }).then(mergeServerData).catch(() => {});
+      window.gem.call('/', { load: 1 }).then(r => {
+        if (r && Array.isArray(r.wall)) mergeServerData(r.wall);
+      }).catch(() => {});
     }
   }
 
