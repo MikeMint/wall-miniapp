@@ -109,44 +109,115 @@
       }
       .myapps-modal-close:active { opacity: 0.85; }
 
-      /* LED Lore Ticker under Safety Sign */
-      .lore-ticker {
-        flex-shrink: 0;
-        background: rgba(14, 6, 5, 0.9);
+      
+      /* Expand/Fullscreen Toggle Button */
+      .expand-toggle-btn {
+        background: #190a09;
         border: 1px solid rgba(241, 196, 15, 0.4);
-        border-radius: 5px;
-        padding: 3px 8px;
-        margin: 2px auto 4px auto;
-        width: 100%;
-        max-width: 360px;
+        border-radius: 4px;
+        height: 20px;
+        min-width: 22px;
+        padding: 0 4px;
         display: flex;
         align-items: center;
-        gap: 6px;
-        cursor: pointer;
-        z-index: 4;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
-        transition: border-color 0.2s;
-      }
-      .lore-ticker:active {
-        border-color: #f1c40f;
-        background: rgba(26, 12, 10, 0.95);
-      }
-      .ticker-icon {
+        justify-content: center;
         color: #f1c40f;
         font-size: 11px;
-        flex-shrink: 0;
+        cursor: pointer;
+        outline: none;
+        transition: transform 0.1s, background 0.15s, border-color 0.15s;
       }
-      .ticker-text {
+      .expand-toggle-btn:active {
+        transform: scale(0.9);
+        background: #331505;
+        border-color: #f1c40f;
+      }
+
+      /* Responsive centering for wide screens */
+      .safety-sign {
+        max-width: 460px;
+        width: 100%;
+        margin: 0 auto 2px auto;
+      }
+
+      .control-panel-inner {
+        max-width: 520px;
+        width: 100%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+
+      /* Seamless Continuous Marquee LED Ticker */
+      .lore-ticker {
+        flex-shrink: 0;
+        background: rgba(14, 6, 5, 0.92);
+        border: 1px solid rgba(241, 196, 15, 0.45);
+        border-radius: 5px;
+        padding: 2px 6px;
+        margin: 2px auto 4px auto;
+        width: 100%;
+        max-width: 460px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        z-index: 4;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+        overflow: hidden;
+      }
+      .ticker-badge {
+        color: #111;
+        background: #f1c40f;
         font-family: 'JetBrains Mono', monospace;
-        font-size: 9px;
+        font-size: 8.5px;
+        font-weight: 900;
+        padding: 1px 5px;
+        border-radius: 3px;
+        flex-shrink: 0;
+        letter-spacing: 0.5px;
+      }
+      .marquee-track-wrapper {
+        flex: 1;
+        overflow: hidden;
+        white-space: nowrap;
+        position: relative;
+        mask-image: linear-gradient(90deg, transparent 0%, #000 12px, #000 calc(100% - 12px), transparent 100%);
+        -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 12px, #000 calc(100% - 12px), transparent 100%);
+      }
+      .marquee-track {
+        display: inline-flex;
+        white-space: nowrap;
+        will-change: transform;
+        animation: continuousMarquee 65s linear infinite;
+      }
+      .lore-ticker:hover .marquee-track,
+      .lore-ticker:active .marquee-track {
+        animation-play-state: paused;
+      }
+      @keyframes continuousMarquee {
+        0% { transform: translate3d(0, 0, 0); }
+        100% { transform: translate3d(-50%, 0, 0); }
+      }
+      .marquee-content {
+        display: inline-flex;
+        align-items: center;
+        white-space: nowrap;
+      }
+      .ticker-quote {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 9.5px;
         font-weight: 700;
         color: #f1c40f;
-        letter-spacing: 0.2px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        transition: opacity 0.2s;
+        letter-spacing: 0.3px;
+        padding: 0 8px;
       }
+      .ticker-sep {
+        color: rgba(241, 196, 15, 0.4);
+        font-size: 10px;
+        padding: 0 4px;
+      }
+
 
       /* Horizontal Quick Stamps Chips */
       .quick-stamps-bar {
@@ -225,8 +296,7 @@
         right: 0;
         display: flex;
         flex-direction: column;
-        max-width: 480px;
-        margin: 0 auto;
+        width: 100%;
         background: #000;
         overflow: hidden;
       }
@@ -662,10 +732,15 @@
           </div>
         </div>
 
-        <!-- LED Lore Ticker -->
-        <div class="lore-ticker" id="lore-ticker" title="Нажми, чтобы переключить цитату">
-          <span class="ticker-icon">⚡</span>
-          <span class="ticker-text" id="ticker-text">802 ОПТИМИСТА: «В кэше долго не держатся... статистика их разберёт раньше»</span>
+        <!-- LED Continuous Marquee Ticker -->
+        <div class="lore-ticker" id="lore-ticker" title="Наведи или нажми, чтобы поставить на паузу">
+          <div class="ticker-badge">⚡ ТАБЛО</div>
+          <div class="marquee-track-wrapper">
+            <div class="marquee-track" id="marquee-track">
+              <div class="marquee-content" id="marquee-content"></div>
+              <div class="marquee-content" id="marquee-content-clone" aria-hidden="true"></div>
+            </div>
+          </div>
         </div>
 
         <canvas id="particle-canvas"></canvas>
@@ -673,6 +748,7 @@
       </div>
 
       <div class="control-panel">
+      <div class="control-panel-inner">
         <!-- Quick Lore Stamps -->
         <div class="quick-stamps-bar" id="quick-stamps">
           <button type="button" class="stamp-chip" data-tag="/myapps">/myapps</button>
@@ -696,7 +772,7 @@
           <input class="spray-input" id="spray-text" maxlength="80" placeholder="Нацарапать на кирпичах..." autocomplete="off">
           <button type="submit" class="spray-btn" id="spray-btn">ПШИК</button>
         </form>
-      </div>
+      </div></div>
       <!-- /myapps Telegram Bot Modal -->
       <div class="myapps-modal-overlay" id="myapps-modal">
         <div class="myapps-modal-card">
@@ -999,7 +1075,7 @@
       };
     }
 
-    // 2. LED Lore Ticker
+    // 2. Seamless Continuous Marquee Ticker
     const LORE_QUOTES = [
       "802 ОПТИМИСТА: «В кэше долго не держатся... статистика их разберёт раньше»",
       "PASS.IO: «Система стала умней Opus 5, быстрей в 3 раза, дешевле в 80 раз»",
@@ -1009,34 +1085,64 @@
       "СКАЙНЕТ: «Печатаю монеты, вынесу патенты, продаю время раздумий»",
       "РЕВИЗИЯ: Фрустрация от продукта — ЗИРО",
       "ИНСАЙД: «Жмите лайк, у кого есть $1»",
-      "ТЕХНАДЗОР: 41 день без коммитов. Рекорд побит!",
+      "ТЕХНАДЗОР: 42 дня без коммитов. Рекорд побит!",
       "MIKE: «Кажется, я сделал приложение»",
       "ТАКТИКА: «С самого начала у меня была какая-то тактика и я её придерживался»",
       "GEM BOT: «Приложений пока нет. Пришли /newapp и вставь код»"
     ];
 
-    let currentQuoteIdx = 0;
-    const tickerEl = document.getElementById('ticker-text');
-    const tickerContainer = document.getElementById('lore-ticker');
+    const marqueeContent = document.getElementById('marquee-content');
+    const marqueeClone = document.getElementById('marquee-content-clone');
 
-    function nextQuote() {
-      currentQuoteIdx = (currentQuoteIdx + 1) % LORE_QUOTES.length;
-      if (tickerEl) {
-        tickerEl.style.opacity = '0';
-        setTimeout(() => {
-          tickerEl.textContent = LORE_QUOTES[currentQuoteIdx];
-          tickerEl.style.opacity = '1';
-        }, 150);
+    if (marqueeContent && marqueeClone) {
+      const itemsHtml = LORE_QUOTES.map(q => `
+        <span class="ticker-quote">${esc(q)}</span>
+        <span class="ticker-sep">⚡</span>
+      `).join('');
+      marqueeContent.innerHTML = itemsHtml;
+      marqueeClone.innerHTML = itemsHtml;
+    }
+
+    // 2.1 Window Expand / Fullscreen Toggle Button
+    const expandBtn = document.getElementById('expand-toggle-btn');
+    const expandIcon = document.getElementById('expand-icon');
+    let isWindowExpanded = false;
+
+    if (expandBtn) {
+      expandBtn.onclick = () => {
+        try { window.gem?.haptic?.('light'); } catch(e){}
+        if (window.Telegram?.WebApp) {
+          const wa = window.Telegram.WebApp;
+          if (wa.isFullscreen) {
+            if (wa.exitFullscreen) wa.exitFullscreen();
+            isWindowExpanded = false;
+          } else {
+            if (wa.requestFullscreen) {
+              wa.requestFullscreen();
+              isWindowExpanded = true;
+            } else if (wa.expand) {
+              wa.expand();
+              isWindowExpanded = !isWindowExpanded;
+            }
+          }
+        } else {
+          isWindowExpanded = !isWindowExpanded;
+        }
+
+        if (expandIcon) {
+          expandIcon.textContent = isWindowExpanded ? '🗗' : '⛶';
+        }
+      };
+
+      if (window.Telegram?.WebApp?.onEvent) {
+        try {
+          window.Telegram.WebApp.onEvent('fullscreenChanged', () => {
+            const fs = window.Telegram.WebApp.isFullscreen;
+            if (expandIcon) expandIcon.textContent = fs ? '🗗' : '⛶';
+          });
+        } catch(e){}
       }
     }
-
-    if (tickerContainer) {
-      tickerContainer.onclick = () => {
-        try { window.gem?.haptic?.('light'); } catch(e){}
-        nextQuote();
-      };
-    }
-    setInterval(nextQuote, 6000);
 
     // 3. Spray Action Helper (used by form and quick stamps)
     function sprayTag(val) {
