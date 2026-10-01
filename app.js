@@ -228,42 +228,56 @@
       }
       .quick-stamps-bar::-webkit-scrollbar { display: none; }
       .stamp-chip {
-        background: #1c0907;
-        border: 1px solid #4a1914;
-        color: rgba(255, 255, 255, 0.85);
+        background: #1e0d0a;
+        border: 1px solid #5a1c15;
+        color: #f1f2f6;
         font-family: 'JetBrains Mono', monospace;
-        font-weight: 700;
+        font-weight: 800;
         font-size: 9.5px;
-        padding: 4px 9px;
-        border-radius: 12px;
+        padding: 5px 11px;
+        border-radius: 14px;
         cursor: pointer;
         flex-shrink: 0;
         letter-spacing: 0.3px;
         transition: all 0.15s;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.6);
       }
       .stamp-chip:active {
-        background: #3d1410;
+        background: #4a1712;
         border-color: var(--accent);
         color: #fff;
-        transform: scale(0.94);
+        transform: scale(0.93);
+        box-shadow: 0 0 12px var(--accent);
       }
 
-      /* Tag Footer with OpenRouter-style meta */
+      /* Tag Footer with bright, punchy Author Badge and AI Meta */
       .tag-footer-row {
-        display: flex;
+        display: inline-flex;
         align-items: center;
         gap: 6px;
-        margin-top: 1px;
-        flex-wrap: wrap;
+        margin-top: 3px;
+        background: rgba(0, 0, 0, 0.78);
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        border-radius: 4px;
+        padding: 2px 6px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.85);
+        white-space: nowrap;
+      }
+      .tag-sig {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 8.5px;
+        font-weight: 800;
+        color: #ffffff;
+        letter-spacing: 0.3px;
+        text-shadow: 0 0 2px #000;
       }
       .tag-ai-meta {
         font-family: 'JetBrains Mono', monospace;
-        font-size: 7.5px;
-        font-weight: 500;
-        color: rgba(241, 196, 15, 0.65);
+        font-size: 8px;
+        font-weight: 700;
+        color: #f1c40f;
         letter-spacing: 0.2px;
-        text-shadow: 1px 1px 2px #000;
+        text-shadow: 0 0 4px rgba(241, 196, 15, 0.5);
       }
 
       @import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Russo+One&family=JetBrains+Mono:wght@700;900&display=swap');
@@ -347,6 +361,9 @@
         overflow-y: auto;
         overflow-x: hidden;
         scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        touch-action: pan-y;
+        overscroll-behavior-y: contain;
         background-color: #201310;
         background-image:
           radial-gradient(ellipse at 50% 12%, rgba(255, 235, 195, 0.28) 0%, rgba(180, 75, 25, 0.08) 55%, rgba(0, 0, 0, 0.88) 100%),
@@ -522,15 +539,15 @@
       .empty-state h3 { font-size: 16px; margin-bottom: 4px; color: rgba(255,255,255,0.7); }
       .empty-state p { font-size: 12px; line-height: 1.4; }
 
-      /* Single-Row Slim Bottom Control Panel */
+      /* Industrial Polished Bottom Control Panel */
       .control-panel {
         flex-shrink: 0;
-        background: #110504;
-        border-top: 1.5px solid #3d1410;
-        padding: 6px 10px max(10px, env(safe-area-inset-bottom, 10px)) 10px;
+        background: linear-gradient(180deg, #180907 0%, #0d0403 100%);
+        border-top: 1.5px solid #4a1712;
+        padding: 8px 12px max(12px, env(safe-area-inset-bottom, 12px)) 12px;
         position: relative;
         z-index: 50;
-        box-shadow: 0 -6px 25px rgba(0,0,0,0.9);
+        box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.95);
       }
 
       /* Popup Palette */
@@ -566,18 +583,19 @@
       }
 
       .color-trigger-btn {
-        width: 38px;
-        height: 38px;
+        width: 40px;
+        height: 40px;
         border-radius: 50%;
-        background: #000;
-        border: 2px solid rgba(255,255,255,0.25);
+        background: radial-gradient(circle at 35% 35%, #2a2a2a, #0a0a0a);
+        border: 2px solid rgba(255, 255, 255, 0.35);
         display: flex;
         align-items: center;
         justify-content: center;
         cursor: pointer;
         padding: 0;
         flex-shrink: 0;
-        transition: border-color 0.2s, transform 0.1s;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8), inset 0 1px 2px rgba(255, 255, 255, 0.3);
+        transition: transform 0.15s, border-color 0.2s;
       }
 
       .color-trigger-btn:active {
@@ -588,7 +606,7 @@
         width: 20px;
         height: 20px;
         border-radius: 50%;
-        box-shadow: 0 0 10px currentColor;
+        box-shadow: 0 0 12px currentColor, inset 0 1px 3px rgba(255, 255, 255, 0.5);
         transition: background-color 0.2s, box-shadow 0.2s;
       }
 
@@ -742,7 +760,7 @@
         </div>
 
         <canvas id="particle-canvas"></canvas>
-        <div id="tags-container" style="display:flex;flex-direction:column;gap:18px;z-index:3;"></div>
+        <div id="tags-container" style="display:flex;flex-direction:column;gap:18px;z-index:3;min-height:100%;padding-bottom:150px;"></div>
       </div>
 
       <div class="control-panel">
