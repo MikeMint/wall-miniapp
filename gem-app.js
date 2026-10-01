@@ -31,12 +31,17 @@ export default async (req, gem) => {
 
   return `<!doctype html><html><head><meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name=theme-color content="#151515">
 <title>Гемострой</title>
+<style>html,body{margin:0;padding:0;background:#0c0303;height:100%;width:100%;overflow:hidden;}</style>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <script>
 if(window.Telegram?.WebApp){
   try{
     Telegram.WebApp.ready();
+    if(Telegram.WebApp.setHeaderColor) Telegram.WebApp.setHeaderColor('#151515');
+    if(Telegram.WebApp.setBackgroundColor) Telegram.WebApp.setBackgroundColor('#0c0303');
+    if(Telegram.WebApp.setBottomBarColor) Telegram.WebApp.setBottomBarColor('#0c0303');
   }catch(e){}
 }
 window._INIT_DATA = ${initData};

@@ -7,6 +7,15 @@
     if (window.Telegram?.WebApp) {
       try {
         window.Telegram.WebApp.ready();
+        if (window.Telegram.WebApp.setHeaderColor) {
+          window.Telegram.WebApp.setHeaderColor('#151515');
+        }
+        if (window.Telegram.WebApp.setBackgroundColor) {
+          window.Telegram.WebApp.setBackgroundColor('#0c0303');
+        }
+        if (window.Telegram.WebApp.setBottomBarColor) {
+          window.Telegram.WebApp.setBottomBarColor('#0c0303');
+        }
       } catch(e) {}
     }
 
@@ -470,7 +479,7 @@
         flex-shrink: 0;
         background: linear-gradient(180deg, #1a0a07 0%, #0c0303 100%);
         border-top: 1.5px solid rgba(255, 71, 87, 0.35);
-        padding: 8px 12px max(12px, env(safe-area-inset-bottom, 12px)) 12px;
+        padding: 8px 12px calc(6px + env(safe-area-inset-bottom, 0px)) 12px;
         position: relative;
         z-index: 50;
         box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.95);
