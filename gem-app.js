@@ -32,7 +32,17 @@ export default async (req, gem) => {
   return `<!doctype html><html><head><meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <title>Гемострой</title>
-<script>window._INIT_DATA = ${initData};</script>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<script>
+if(window.Telegram?.WebApp){
+  try{
+    Telegram.WebApp.ready();
+    Telegram.WebApp.expand();
+    if(Telegram.WebApp.requestFullscreen)Telegram.WebApp.requestFullscreen();
+  }catch(e){}
+}
+window._INIT_DATA = ${initData};
+</script>
 </head><body>
 <div id="root"></div>
 <script src="https://mikemint.github.io/wall-miniapp/app.js?v=${Date.now()}"></script>

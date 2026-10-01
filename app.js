@@ -3,12 +3,202 @@
     if (window._wallAppStarted) return;
     window._wallAppStarted = true;
 
+    // Expand to full size in Telegram
+    if (window.Telegram?.WebApp) {
+      try {
+        window.Telegram.WebApp.ready();
+        window.Telegram.WebApp.expand();
+        if (window.Telegram.WebApp.requestFullscreen) {
+          window.Telegram.WebApp.requestFullscreen();
+        }
+      } catch(e) {}
+    }
+
     // Check guest
     if (window.gem?.guest?.()) return;
 
     // Inject styles
     const style = document.createElement('style');
     style.textContent = `
+      /* /myapps Top Pill Button */
+      .myapps-badge-btn {
+        background: #190a09;
+        border: 1px solid #ff4757aa;
+        border-radius: 4px;
+        padding: 1px 7px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        cursor: pointer;
+        outline: none;
+        box-shadow: 0 0 6px rgba(255, 71, 87, 0.25);
+        transition: transform 0.1s, background 0.15s;
+      }
+      .myapps-badge-btn:active {
+        transform: scale(0.92);
+        background: #330b0a;
+      }
+      .myapps-cmd {
+        font-family: 'JetBrains Mono', monospace;
+        font-weight: 900;
+        font-size: 10px;
+        color: #ff6b6b;
+        letter-spacing: 0.3px;
+      }
+      .myapps-pill {
+        background: #ff4757;
+        color: #fff;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 8px;
+        font-weight: 900;
+        padding: 0 4px;
+        border-radius: 6px;
+      }
+
+      /* /myapps Modal Overlay */
+      .myapps-modal-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.78);
+        backdrop-filter: blur(5px);
+        z-index: 200;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 18px;
+        animation: fadeIn 0.15s ease-out forwards;
+      }
+      .myapps-modal-overlay.open { display: flex; }
+      .myapps-modal-card {
+        background: #180907;
+        border: 1.5px solid #ff4757;
+        border-radius: 14px;
+        padding: 18px;
+        max-width: 320px;
+        width: 100%;
+        box-shadow: 0 12px 40px rgba(255, 71, 87, 0.35);
+        text-align: center;
+        animation: popUp 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+      }
+      .myapps-modal-icon { font-size: 32px; margin-bottom: 6px; }
+      .myapps-modal-title { font-family: 'Russo One', sans-serif; font-size: 16px; color: #ff6b6b; margin-bottom: 6px; }
+      .myapps-modal-msg { font-size: 12.5px; color: #eee; line-height: 1.45; margin-bottom: 12px; }
+      .myapps-modal-counter {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 10px;
+        color: #f1c40f;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 4px 8px;
+        border-radius: 6px;
+        border: 1px dashed rgba(241, 196, 15, 0.4);
+        margin-bottom: 14px;
+        display: inline-block;
+      }
+      .myapps-modal-close {
+        background: #ff4757;
+        color: #fff;
+        font-family: 'Russo One', sans-serif;
+        font-size: 12px;
+        padding: 9px 18px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        width: 100%;
+        letter-spacing: 0.5px;
+        transition: opacity 0.15s;
+      }
+      .myapps-modal-close:active { opacity: 0.85; }
+
+      /* LED Lore Ticker under Safety Sign */
+      .lore-ticker {
+        flex-shrink: 0;
+        background: rgba(14, 6, 5, 0.9);
+        border: 1px solid rgba(241, 196, 15, 0.4);
+        border-radius: 5px;
+        padding: 3px 8px;
+        margin: 2px auto 4px auto;
+        width: 100%;
+        max-width: 360px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        cursor: pointer;
+        z-index: 4;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+        transition: border-color 0.2s;
+      }
+      .lore-ticker:active {
+        border-color: #f1c40f;
+        background: rgba(26, 12, 10, 0.95);
+      }
+      .ticker-icon {
+        color: #f1c40f;
+        font-size: 11px;
+        flex-shrink: 0;
+      }
+      .ticker-text {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 9px;
+        font-weight: 700;
+        color: #f1c40f;
+        letter-spacing: 0.2px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        transition: opacity 0.2s;
+      }
+
+      /* Horizontal Quick Stamps Chips */
+      .quick-stamps-bar {
+        overflow-x: auto;
+        white-space: nowrap;
+        padding: 0 0 6px 0;
+        margin-bottom: 2px;
+        display: flex;
+        gap: 6px;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+      .quick-stamps-bar::-webkit-scrollbar { display: none; }
+      .stamp-chip {
+        background: #1c0907;
+        border: 1px solid #4a1914;
+        color: rgba(255, 255, 255, 0.85);
+        font-family: 'JetBrains Mono', monospace;
+        font-weight: 700;
+        font-size: 9.5px;
+        padding: 4px 9px;
+        border-radius: 12px;
+        cursor: pointer;
+        flex-shrink: 0;
+        letter-spacing: 0.3px;
+        transition: all 0.15s;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+      }
+      .stamp-chip:active {
+        background: #3d1410;
+        border-color: var(--accent);
+        color: #fff;
+        transform: scale(0.94);
+      }
+
+      /* Tag Footer with OpenRouter-style meta */
+      .tag-footer-row {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        margin-top: 1px;
+        flex-wrap: wrap;
+      }
+      .tag-ai-meta {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 7.5px;
+        font-weight: 500;
+        color: rgba(241, 196, 15, 0.65);
+        letter-spacing: 0.2px;
+        text-shadow: 1px 1px 2px #000;
+      }
+
       @import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Russo+One&family=JetBrains+Mono:wght@700;900&display=swap');
 
       :root {
@@ -29,7 +219,7 @@
 
       #root {
         position: fixed;
-        top: 48px;
+        top: 0;
         bottom: 0;
         left: 0;
         right: 0;
@@ -472,11 +662,30 @@
           </div>
         </div>
 
+        <!-- LED Lore Ticker -->
+        <div class="lore-ticker" id="lore-ticker" title="Нажми, чтобы переключить цитату">
+          <span class="ticker-icon">⚡</span>
+          <span class="ticker-text" id="ticker-text">802 ОПТИМИСТА: «В кэше долго не держатся... статистика их разберёт раньше»</span>
+        </div>
+
         <canvas id="particle-canvas"></canvas>
         <div id="tags-container" style="display:flex;flex-direction:column;gap:12px;z-index:3;"></div>
       </div>
 
       <div class="control-panel">
+        <!-- Quick Lore Stamps -->
+        <div class="quick-stamps-bar" id="quick-stamps">
+          <button type="button" class="stamp-chip" data-tag="/myapps">/myapps</button>
+          <button type="button" class="stamp-chip" data-tag="УМНЕЕ OPUS 5">УМНЕЕ OPUS 5</button>
+          <button type="button" class="stamp-chip" data-tag="802 ОПТИМИСТА">802 ОПТИМИСТА</button>
+          <button type="button" class="stamp-chip" data-tag="ГДЕ $1?!">ГДЕ $1?!</button>
+          <button type="button" class="stamp-chip" data-tag="ТАКТИКА БЫЛА">ТАКТИКА БЫЛА</button>
+          <button type="button" class="stamp-chip" data-tag="ЗИРО РЕЗУЛЬТАТ">ЗИРО РЕЗУЛЬТАТ</button>
+          <button type="button" class="stamp-chip" data-tag="ПОРА ПОЕСТЬ НА НОЧЬ">ПОРА ПОЕСТЬ НА НОЧЬ</button>
+          <button type="button" class="stamp-chip" data-tag="ПЕЧАТАЮ МОНЕТЫ">ПЕЧАТАЮ МОНЕТЫ</button>
+          <button type="button" class="stamp-chip" data-tag="ПРОРАБ ЛЕНИТСЯ">ПРОРАБ ЛЕНИТСЯ</button>
+        </div>
+
         <div class="palette-popover" id="palette-popover">
           <div class="palette-row" id="palette-bar"></div>
         </div>
@@ -487,6 +696,16 @@
           <input class="spray-input" id="spray-text" maxlength="80" placeholder="Нацарапать на кирпичах..." autocomplete="off">
           <button type="submit" class="spray-btn" id="spray-btn">ПШИК</button>
         </form>
+      </div>
+      <!-- /myapps Telegram Bot Modal -->
+      <div class="myapps-modal-overlay" id="myapps-modal">
+        <div class="myapps-modal-card">
+          <div class="myapps-modal-icon">🤖</div>
+          <div class="myapps-modal-title">@gembot</div>
+          <div class="myapps-modal-msg">Приложений пока нет. Пришли /newapp и вставь 4000 символов кода.</div>
+          <div class="myapps-modal-counter" id="myapps-modal-info">802 оптимиста нажали эту кнопку 14,802 раза.</div>
+          <button type="button" class="myapps-modal-close" id="myapps-close">ПОНЯТНО, ЖДЁМ ДАЛЬШЕ</button>
+        </div>
       </div>
     `;
 
@@ -671,12 +890,26 @@
         const col = t.color || PALETTE[idx % PALETTE.length].hex;
         const author = t.name || 'Аноним';
 
+        const modelMetas = [
+          "Opus 5 · saved 99% · 0.1s",
+          "4o Mini · saved $0.002 (92%)",
+          "Pass.io · 802 в кэше",
+          "Gemini Flash · $0.000000",
+          "OSS 20B · saved 100% · tok: 4000",
+          "Zero-Shot · Ответ: Нет",
+          "4000/4000 chars · fresh"
+        ];
+        const metaStr = t.meta || modelMetas[idx % modelMetas.length];
+
         return `
           <div class="tag-bubble" style="margin-left: ${leftOffset}%; transform: rotate(${rotation}deg);">
             <div class="tag-text" style="color: ${col}; font-size: ${fontSize}px;">
               ${esc(text)}
             </div>
-            <div class="tag-sig">~ ${esc(author)}</div>
+            <div class="tag-footer-row">
+              <span class="tag-sig">~ ${esc(author)}</span>
+              <span class="tag-ai-meta">⚡ ${metaStr}</span>
+            </div>
           </div>
         `;
       }).join('');
@@ -731,17 +964,83 @@
       renderTags();
     }
 
-    // Form submit
-    const form = document.getElementById('spray-form');
-    const input = document.getElementById('spray-text');
 
-    form.onsubmit = (e) => {
-      e.preventDefault();
-      const val = input.value.trim();
+    // --- LORE LOGIC ---
+
+    // 1. /myapps Clicker & Modal
+    let myappsClicks = parseInt(localStorage.getItem('myapps_clicks') || '14802', 10);
+    const myappsBtn = document.getElementById('myapps-btn');
+    const myappsCnt = document.getElementById('myapps-cnt');
+    const myappsModal = document.getElementById('myapps-modal');
+    const myappsClose = document.getElementById('myapps-close');
+    const myappsModalInfo = document.getElementById('myapps-modal-info');
+
+    if (myappsCnt) myappsCnt.textContent = myappsClicks;
+
+    function openMyAppsModal() {
+      myappsClicks++;
+      localStorage.setItem('myapps_clicks', myappsClicks);
+      if (myappsCnt) myappsCnt.textContent = myappsClicks;
+      if (myappsModalInfo) {
+        myappsModalInfo.textContent = `802 оптимиста нажали эту кнопку ${myappsClicks.toLocaleString('ru-RU')} раз.`;
+      }
+      try {
+        if (window.gem?.haptic) window.gem.haptic('heavy');
+        if (window.gem?.sound?.beep) window.gem.sound.beep(160, 120, 'square', 0.4);
+      } catch(e){}
+      if (myappsModal) myappsModal.classList.add('open');
+    }
+
+    if (myappsBtn) myappsBtn.onclick = openMyAppsModal;
+    if (myappsClose) myappsClose.onclick = () => myappsModal.classList.remove('open');
+    if (myappsModal) {
+      myappsModal.onclick = (e) => {
+        if (e.target === myappsModal) myappsModal.classList.remove('open');
+      };
+    }
+
+    // 2. LED Lore Ticker
+    const LORE_QUOTES = [
+      "802 ОПТИМИСТА: «В кэше долго не держатся... статистика их разберёт раньше»",
+      "PASS.IO: «Система стала умней Opus 5, быстрей в 3 раза, дешевле в 80 раз»",
+      "OPUS 5: $0.000000 · saved $1.00 (100%) · Ответ: «Я не могу помочь с этой задачей»",
+      "МОГАДИШО: Завтра +32°, зонт не брать, прораб ленится",
+      "ОПРОС: «Ну че ты, нормально заработал?» — «Нет»",
+      "СКАЙНЕТ: «Печатаю монеты, вынесу патенты, продаю время раздумий»",
+      "РЕВИЗИЯ: Фрустрация от продукта — ЗИРО",
+      "ИНСАЙД: «Жмите лайк, у кого есть $1»",
+      "ТЕХНАДЗОР: 41 день без коммитов. Рекорд побит!",
+      "MIKE: «Кажется, я сделал приложение»",
+      "ТАКТИКА: «С самого начала у меня была какая-то тактика и я её придерживался»",
+      "GEM BOT: «Приложений пока нет. Пришли /newapp и вставь код»"
+    ];
+
+    let currentQuoteIdx = 0;
+    const tickerEl = document.getElementById('ticker-text');
+    const tickerContainer = document.getElementById('lore-ticker');
+
+    function nextQuote() {
+      currentQuoteIdx = (currentQuoteIdx + 1) % LORE_QUOTES.length;
+      if (tickerEl) {
+        tickerEl.style.opacity = '0';
+        setTimeout(() => {
+          tickerEl.textContent = LORE_QUOTES[currentQuoteIdx];
+          tickerEl.style.opacity = '1';
+        }, 150);
+      }
+    }
+
+    if (tickerContainer) {
+      tickerContainer.onclick = () => {
+        try { window.gem?.haptic?.('light'); } catch(e){}
+        nextQuote();
+      };
+    }
+    setInterval(nextQuote, 6000);
+
+    // 3. Spray Action Helper (used by form and quick stamps)
+    function sprayTag(val) {
       if (!val) return;
-
-      input.value = '';
-
       try { window.gem?.haptic?.('heavy'); } catch(e){}
       playSpraySound();
 
@@ -757,13 +1056,34 @@
       saveLocalTags(tags);
       renderTags();
 
-      // Auto-cycle color for next spray to keep the wall colorful and diverse
+      // Auto-cycle color
       const nextIdx = (PALETTE.findIndex(c => c.hex === selectedColor) + 1) % PALETTE.length;
       updateAccent(PALETTE[nextIdx].hex);
 
       if (window.gem?.call) {
         window.gem.call('/', { msg: val, color: selectedColor, name: myName }).then(mergeServerData).catch(() => {});
       }
+    }
+
+    // 4. Quick Stamps Tap Handling
+    document.querySelectorAll('.stamp-chip').forEach(chip => {
+      chip.onclick = (e) => {
+        e.preventDefault();
+        const tagText = chip.getAttribute('data-tag');
+        if (tagText) sprayTag(tagText);
+      };
+    });
+
+    // Form submit
+    const form = document.getElementById('spray-form');
+    const input = document.getElementById('spray-text');
+
+    form.onsubmit = (e) => {
+      e.preventDefault();
+      const val = input.value.trim();
+      if (!val) return;
+      input.value = '';
+      sprayTag(val);
     };
 
     // 1. Instant local load
