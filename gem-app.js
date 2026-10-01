@@ -1,27 +1,39 @@
 // title: Гемострой
 // about: Интерактивная кирпичная стена ожидания приложения
 export default async (req, gem) => {
-  if (req.method === 'POST') {
-    if (!gem.user?.id) return {};
-    const b = await req.json();
+  let my = [];
+  try {
     const raw = await gem.store.get('w');
-    const my = JSON.parse(raw ? raw : '[]');
-    const t = b.msg?.trim().slice(0, 80);
+    if (raw) my = JSON.parse(raw);
+  } catch(e) {}
+
+  if (req.method === 'POST') {
+    let b = {};
+    try { b = await req.json(); } catch(e) {}
+    const t = b.msg ? String(b.msg).trim().slice(0, 80) : '';
     if (t) {
-      const author = gem.user?.name ? gem.user.name : 'Я';
+      const author = gem.user && gem.user.name ? gem.user.name : (b.name ? b.name : 'Я');
       const col = b.color ? b.color : '#ff4757';
-      my.push({ name: author, text: t, color: col });
+      const item = { name: author, text: t, color: col, time: Date.now() };
+      my.push(item);
       if (my.length > 50) my.shift();
-      await gem.store.set('w', JSON.stringify(my));
-      try { await gem.board('w').add(Math.floor(Date.now() / 1000), t); } catch {}
+      try { await gem.store.set('w', JSON.stringify(my)); } catch(e) {}
+      try { await gem.board('w').add(Date.now(), JSON.stringify(item)); } catch(e) {}
     }
-    let bd; try { bd = await gem.board('w').top(50); } catch {}
-    return { my, bd };
+    let bd = [];
+    try { bd = await gem.board('w').top(50); } catch(e) {}
+    return { my: my, bd: bd ? bd : [] };
   }
+
+  let bd = [];
+  try { bd = await gem.board('w').top(50); } catch(e) {}
+  const initData = JSON.stringify({ my: my, bd: bd ? bd : [] }).replace(/</g, '\\u003c');
 
   return `<!doctype html><html><head><meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
-<title>Гемострой</title></head><body>
+<title>Гемострой</title>
+<script>window._INIT_DATA = ${initData};</script>
+</head><body>
 <div id="root"></div>
 <script src="https://mikemint.github.io/wall-miniapp/app.js?v=${Date.now()}"></script>
 </body></html>`;

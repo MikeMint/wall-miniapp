@@ -89,12 +89,13 @@
         overflow-y: auto;
         overflow-x: hidden;
         scroll-behavior: smooth;
-        background-color: #1a1210;
+        background-color: #201310;
         background-image:
-          radial-gradient(ellipse at 50% 15%, rgba(255, 235, 195, 0.22) 0%, rgba(190, 85, 35, 0.08) 55%, rgba(8, 3, 2, 0.78) 100%),
-          linear-gradient(180deg, rgba(0, 0, 0, 0.12) 0%, rgba(0, 0, 0, 0.0) 50%, rgba(0, 0, 0, 0.45) 100%),
-          url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27120%27 height=%2750%27 fill=%27%232b2320%27%3E%3Crect width=%27120%27 height=%2750%27 fill=%27%232b2320%27/%3E%3Cline x1=%270%27 y1=%2725%27 x2=%27120%27 y2=%2725%27 stroke=%27%23191311%27 stroke-width=%271.2%27 opacity=%270.75%27/%3E%3Cline x1=%270%27 y1=%2750%27 x2=%27120%27 y2=%2750%27 stroke=%27%23191311%27 stroke-width=%271.2%27 opacity=%270.75%27/%3E%3Cline x1=%2760%27 y1=%270%27 x2=%2760%27 y2=%2725%27 stroke=%27%23191311%27 stroke-width=%271.2%27 opacity=%270.75%27/%3E%3Cline x1=%2730%27 y1=%2725%27 x2=%2730%27 y2=%2750%27 stroke=%27%23191311%27 stroke-width=%271.2%27 opacity=%270.75%27/%3E%3Cline x1=%2790%27 y1=%2725%27 x2=%2790%27 y2=%2750%27 stroke=%27%23191311%27 stroke-width=%271.2%27 opacity=%270.75%27/%3E%3Crect x=%272%27 y=%272%27 width=%2756%27 height=%2721%27 rx=%271.5%27 fill=%27%239e3e2c%27/%3E%3Crect x=%273%27 y=%272%27 width=%2754%27 height=%272%27 fill=%27%23e27965%27 opacity=%270.55%27/%3E%3Crect x=%272%27 y=%273%27 width=%272%27 height=%2719%27 fill=%27%23e27965%27 opacity=%270.35%27/%3E%3Crect x=%273%27 y=%2721%27 width=%2754%27 height=%272%27 fill=%27%234a160d%27 opacity=%270.75%27/%3E%3Crect x=%2756%27 y=%273%27 width=%272%27 height=%2719%27 fill=%27%234a160d%27 opacity=%270.65%27/%3E%3Cellipse cx=%2720%27 cy=%2712%27 rx=%276%27 ry=%273%27 fill=%27%23ba4e3a%27 opacity=%270.35%27/%3E%3Cellipse cx=%2742%27 cy=%279%27 rx=%275%27 ry=%272.5%27 fill=%27%237c2a1c%27 opacity=%270.35%27/%3E%3Ccircle cx=%2712%27 cy=%2718%27 r=%271.5%27 fill=%27%234d160e%27 opacity=%270.4%27/%3E%3Ccircle cx=%2748%27 cy=%2716%27 r=%271.2%27 fill=%27%23e07a67%27 opacity=%270.3%27/%3E%3Crect x=%2762%27 y=%272%27 width=%2756%27 height=%2721%27 rx=%271.5%27 fill=%27%238c3422%27/%3E%3Crect x=%2763%27 y=%272%27 width=%2754%27 height=%272%27 fill=%27%23cb6450%27 opacity=%270.5%27/%3E%3Crect x=%2762%27 y=%273%27 width=%272%27 height=%2719%27 fill=%27%23cb6450%27 opacity=%270.3%27/%3E%3Crect x=%2763%27 y=%2721%27 width=%2754%27 height=%272%27 fill=%27%233e1007%27 opacity=%270.8%27/%3E%3Crect x=%27116%27 y=%273%27 width=%272%27 height=%2719%27 fill=%27%233e1007%27 opacity=%270.7%27/%3E%3Cellipse cx=%2778%27 cy=%2715%27 rx=%277%27 ry=%273%27 fill=%27%23a43d2b%27 opacity=%270.3%27/%3E%3Cellipse cx=%27100%27 cy=%2710%27 rx=%275%27 ry=%272.5%27 fill=%27%236a1f13%27 opacity=%270.4%27/%3E%3Ccircle cx=%2770%27 cy=%278%27 r=%271.5%27 fill=%27%23451108%27 opacity=%270.45%27/%3E%3Ccircle cx=%27110%27 cy=%2717%27 r=%271.3%27 fill=%27%23cb6754%27 opacity=%270.3%27/%3E%3Crect x=%2732%27 y=%2727%27 width=%2756%27 height=%2721%27 rx=%271.5%27 fill=%27%23a6422f%27/%3E%3Crect x=%2733%27 y=%2727%27 width=%2754%27 height=%272%27 fill=%27%23f08d7a%27 opacity=%270.55%27/%3E%3Crect x=%2732%27 y=%2728%27 width=%272%27 height=%2719%27 fill=%27%23f08d7a%27 opacity=%270.3%27/%3E%3Crect x=%2733%27 y=%2746%27 width=%2754%27 height=%272%27 fill=%27%23541b10%27 opacity=%270.75%27/%3E%3Crect x=%2786%27 y=%2728%27 width=%272%27 height=%2719%27 fill=%27%23541b10%27 opacity=%270.65%27/%3E%3Cellipse cx=%2750%27 cy=%2736%27 rx=%278%27 ry=%273.5%27 fill=%27%23c4533e%27 opacity=%270.3%27/%3E%3Cellipse cx=%2772%27 cy=%2741%27 rx=%276%27 ry=%273%27 fill=%27%237e291b%27 opacity=%270.4%27/%3E%3Ccircle cx=%2740%27 cy=%2743%27 r=%271.4%27 fill=%27%2354170d%27 opacity=%270.4%27/%3E%3Ccircle cx=%2780%27 cy=%2733%27 r=%271.5%27 fill=%27%23e87864%27 opacity=%270.35%27/%3E%3Crect x=%270%27 y=%2727%27 width=%2728%27 height=%2721%27 rx=%271.5%27 fill=%27%23b34b36%27/%3E%3Crect x=%270%27 y=%2727%27 width=%2727%27 height=%272%27 fill=%27%23f39280%27 opacity=%270.55%27/%3E%3Crect x=%2726%27 y=%2728%27 width=%272%27 height=%2719%27 fill=%27%23581e13%27 opacity=%270.65%27/%3E%3Crect x=%270%27 y=%2746%27 width=%2727%27 height=%272%27 fill=%27%23581e13%27 opacity=%270.75%27/%3E%3Cellipse cx=%2714%27 cy=%2738%27 rx=%275%27 ry=%273%27 fill=%27%238e3322%27 opacity=%270.35%27/%3E%3Ccircle cx=%2722%27 cy=%2732%27 r=%271.2%27 fill=%27%23e6806e%27 opacity=%270.35%27/%3E%3Crect x=%2792%27 y=%2727%27 width=%2728%27 height=%2721%27 rx=%271.5%27 fill=%27%23b34b36%27/%3E%3Crect x=%2793%27 y=%2727%27 width=%2727%27 height=%272%27 fill=%27%23f39280%27 opacity=%270.55%27/%3E%3Crect x=%2792%27 y=%2728%27 width=%272%27 height=%2719%27 fill=%27%23f39280%27 opacity=%270.35%27/%3E%3Crect x=%2793%27 y=%2746%27 width=%2727%27 height=%272%27 fill=%27%23581e13%27 opacity=%270.75%27/%3E%3Cellipse cx=%27106%27 cy=%2735%27 rx=%276%27 ry=%273%27 fill=%27%23cb5d48%27 opacity=%270.3%27/%3E%3Ccircle cx=%2798%27 cy=%2742%27 r=%271.4%27 fill=%27%23641d11%27 opacity=%270.4%27/%3E%3C/svg%3E");
-        background-size: 100% 100%, 100% 100%, 120px 50px;
+          radial-gradient(ellipse at 50% 12%, rgba(255, 235, 195, 0.28) 0%, rgba(180, 75, 25, 0.08) 55%, rgba(0, 0, 0, 0.88) 100%),
+          linear-gradient(180deg, rgba(0, 0, 0, 0.22) 0%, rgba(0, 0, 0, 0.0) 50%, rgba(0, 0, 0, 0.65) 100%),
+          url("https://mikemint.github.io/wall-miniapp/brick.jpg");
+        background-size: 100% 100%, 100% 100%, 360px 360px;
+        background-repeat: no-repeat, no-repeat, repeat;
         display: flex;
         flex-direction: column;
         padding: 8px 12px 14px 12px;
@@ -606,7 +607,33 @@
     }
     requestAnimationFrame(loopParticles);
 
-    // Tags rendering
+    // Tags storage and rendering
+    const STORAGE_KEY = 'gemostroy_wall_tags_v3';
+
+    const DEFAULT_COMMUNITY_TAGS = [
+      { text: "ГЕМОСТРОЙ", name: "Бригадир", color: "#ff4757" },
+      { text: "41 ДЕНЬ БЕЗ КОММИТОВ", name: "Технадзор", color: "#ffa502" },
+      { text: "СДАЧА В 2035 ГОДУ", name: "Прораб", color: "#2ed573" },
+      { text: "КОГДА АПП?!", name: "Ждун", color: "#00d2d3" }
+    ];
+
+    function loadLocalTags() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+        }
+      } catch(e) {}
+      return [];
+    }
+
+    function saveLocalTags(list) {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(list.slice(-60)));
+      } catch(e) {}
+    }
+
     const container = document.getElementById('tags-container');
     const wallView = document.getElementById('wall-view');
 
@@ -657,19 +684,51 @@
       wallView.scrollTop = wallView.scrollHeight;
     }
 
-    // Merge server data
+    // Merge server data without wiping local tags
     function mergeServerData(res) {
       if (!res) return;
-      const all = res.my || [];
-      if (res.bd) {
+      const incoming = [];
+      if (Array.isArray(res.my)) {
+        incoming.push(...res.my);
+      }
+      if (Array.isArray(res.bd)) {
         res.bd.forEach(b => {
-          const text = b.label || b.text;
-          if (text && !all.some(x => (x.text || x.label) === text)) {
-            all.push({ text: text, name: b.name, color: PALETTE[all.length % PALETTE.length].hex });
+          let item = null;
+          if (typeof b === 'object' && b !== null) {
+            if (b.text) item = b;
+            else if (b.label) {
+              try { item = JSON.parse(b.label); } catch(e) { item = { text: b.label, name: b.name }; }
+            } else if (b.name && !b.text) {
+              try { item = JSON.parse(b.name); } catch(e) { item = { text: b.name }; }
+            }
           }
+          if (item && item.text) incoming.push(item);
         });
       }
-      renderTags(all);
+
+      const map = new Map();
+      // Keep existing tags first
+      tags.forEach(t => {
+        const k = (t.text || '').trim().toLowerCase();
+        if (k) map.set(k, t);
+      });
+      // Merge server tags
+      incoming.forEach(t => {
+        const k = (t.text || '').trim().toLowerCase();
+        if (k) {
+          if (!map.has(k)) {
+            map.set(k, {
+              text: t.text,
+              name: t.name || 'Аноним',
+              color: t.color || PALETTE[map.size % PALETTE.length].hex
+            });
+          }
+        }
+      });
+
+      tags = Array.from(map.values());
+      saveLocalTags(tags);
+      renderTags();
     }
 
     // Form submit
@@ -690,7 +749,12 @@
       spawnSprayParticles(rect.left + rect.width / 2, rect.top - 20, selectedColor);
 
       const myName = window.gem?.user?.name || 'Я';
-      tags.push({ text: val, name: myName, color: selectedColor });
+      const newTag = { text: val, name: myName, color: selectedColor, time: Date.now() };
+
+      const k = val.toLowerCase();
+      tags = tags.filter(t => (t.text || '').trim().toLowerCase() !== k);
+      tags.push(newTag);
+      saveLocalTags(tags);
       renderTags();
 
       // Auto-cycle color for next spray to keep the wall colorful and diverse
@@ -698,15 +762,27 @@
       updateAccent(PALETTE[nextIdx].hex);
 
       if (window.gem?.call) {
-        window.gem.call('/', { msg: val, color: selectedColor }).then(mergeServerData);
+        window.gem.call('/', { msg: val, color: selectedColor, name: myName }).then(mergeServerData).catch(() => {});
       }
     };
 
-    // Initial load from server
-    if (window.gem?.call) {
-      window.gem.call('/', { load: 1 }).then(mergeServerData);
+    // 1. Instant local load
+    const saved = loadLocalTags();
+    if (saved.length > 0) {
+      tags = saved;
+      renderTags();
+      if (window._INIT_DATA) mergeServerData(window._INIT_DATA);
+    } else if (window._INIT_DATA) {
+      mergeServerData(window._INIT_DATA);
     } else {
-      renderTags([]);
+      tags = [...DEFAULT_COMMUNITY_TAGS];
+      saveLocalTags(tags);
+      renderTags();
+    }
+
+    // 2. Background server sync
+    if (window.gem?.call) {
+      window.gem.call('/', { load: 1 }).then(mergeServerData).catch(() => {});
     }
   }
 
