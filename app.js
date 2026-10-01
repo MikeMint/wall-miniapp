@@ -3,13 +3,13 @@
     if (window._wallAppStarted) return;
     window._wallAppStarted = true;
 
-    // Expand to full size in Telegram
+    // Expand only on mobile devices (Android / iOS)
     if (window.Telegram?.WebApp) {
       try {
         window.Telegram.WebApp.ready();
-        window.Telegram.WebApp.expand();
-        if (window.Telegram.WebApp.requestFullscreen) {
-          window.Telegram.WebApp.requestFullscreen();
+        const p = window.Telegram.WebApp.platform;
+        if (p === 'android' || p === 'ios') {
+          window.Telegram.WebApp.expand();
         }
       } catch(e) {}
     }
@@ -669,7 +669,7 @@
         </div>
 
         <canvas id="particle-canvas"></canvas>
-        <div id="tags-container" style="display:flex;flex-direction:column;gap:12px;z-index:3;"></div>
+        <div id="tags-container" style="display:flex;flex-direction:column;gap:18px;z-index:3;"></div>
       </div>
 
       <div class="control-panel">
@@ -868,8 +868,8 @@
         return;
       }
 
-      const scatterOffsets = [4, 42, 14, 52, 24, 8, 38, 18, 46];
-      const angles = [-4.5, 3.5, -2, 5, -3.5, 2, -5, 4, -2.5];
+      const scatterOffsets = [4, 20, 8, 26, 12, 6, 24, 10, 18];
+      const angles = [-2.5, 2, -1.5, 2.5, -2, 1.5, -3, 2, -1];
 
       container.innerHTML = tags.map((t, idx) => {
         const text = t.text || t.label || '';
