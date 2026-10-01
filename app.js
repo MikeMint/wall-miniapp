@@ -3,14 +3,10 @@
     if (window._wallAppStarted) return;
     window._wallAppStarted = true;
 
-    // Expand only on mobile devices (Android / iOS)
+    // Standard Telegram WebApp initialization
     if (window.Telegram?.WebApp) {
       try {
         window.Telegram.WebApp.ready();
-        const p = window.Telegram.WebApp.platform;
-        if (p === 'android' || p === 'ios') {
-          window.Telegram.WebApp.expand();
-        }
       } catch(e) {}
     }
 
@@ -296,9 +292,11 @@
         right: 0;
         display: flex;
         flex-direction: column;
-        width: 100%;
+        max-width: 480px;
+        margin: 0 auto;
         background: #000;
         overflow: hidden;
+        box-shadow: 0 0 50px rgba(0, 0, 0, 0.9);
       }
 
       /* Warning tape subheader */

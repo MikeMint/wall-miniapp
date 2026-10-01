@@ -37,8 +37,6 @@ export default async (req, gem) => {
 if(window.Telegram?.WebApp){
   try{
     Telegram.WebApp.ready();
-    const p = Telegram.WebApp.platform;
-    if(p === 'android' || p === 'ios') Telegram.WebApp.expand();
   }catch(e){}
 }
 window._INIT_DATA = ${initData};
