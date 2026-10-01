@@ -1062,14 +1062,15 @@
     requestAnimationFrame(loopParticles);
 
     // Tags storage and rendering
-    const STORAGE_KEY = 'gemostroy_wall_tags_v3';
+    const STORAGE_KEY = 'gemostroy_wall_v4_clean';
 
-    const DEFAULT_COMMUNITY_TAGS = [
-      { text: "ГЕМОСТРОЙ", name: "Бригадир", color: "#ff4757" },
-      { text: "41 ДЕНЬ БЕЗ КОММИТОВ", name: "Технадзор", color: "#ffa502" },
-      { text: "СДАЧА В 2035 ГОДУ", name: "Прораб", color: "#2ed573" },
-      { text: "КОГДА АПП?!", name: "Ждун", color: "#00d2d3" }
-    ];
+    try {
+      localStorage.removeItem('gemostroy_wall_tags_v3');
+      localStorage.removeItem('wall_tags_cache');
+      localStorage.removeItem('wall_tags');
+    } catch(e) {}
+
+    const DEFAULT_COMMUNITY_TAGS = [];
 
     function loadLocalTags() {
       try {
@@ -1348,21 +1349,15 @@
     };
 
     // 1. Initial wall load from server _INIT_DATA or local cache
-    if (window._INIT_DATA && Array.isArray(window._INIT_DATA.wall) && window._INIT_DATA.wall.length > 0) {
+    if (window._INIT_DATA && Array.isArray(window._INIT_DATA.wall)) {
       tags = window._INIT_DATA.wall;
       saveLocalTags(tags);
       renderTags();
     } else {
       const saved = loadLocalTags();
-      if (saved.length > 0) {
-        tags = saved;
-        renderTags();
-        if (window._INIT_DATA) mergeServerData(window._INIT_DATA);
-      } else {
-        tags = [...DEFAULT_COMMUNITY_TAGS];
-        saveLocalTags(tags);
-        renderTags();
-      }
+      tags = saved;
+      renderTags();
+      if (window._INIT_DATA) mergeServerData(window._INIT_DATA);
     }
 
     // 2. Connect to Gem Live WebSocket Hall for Real-time Multiplayer

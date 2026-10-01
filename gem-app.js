@@ -1,18 +1,6 @@
 // title: Гемострой
 // about: Интерактивная кирпичная стена ожидания приложения
-let wall = [
-  { name: 'Бригадир', text: 'ГЕМОСТРОЙ', color: '#ff4757', time: 1 },
-  { name: 'Технадзор', text: '42 ДНЯ БЕЗ КОММИТОВ', color: '#ffa502', time: 2 },
-  { name: 'Ждун', text: 'КОГДА АПП?!', color: '#00d2d3', time: 3 },
-  { name: 'Mike', text: 'ГДЕ ГЕМЫ?', color: '#00d2d3', time: 4 },
-  { name: 'Mike', text: 'НУ И КАК ДЕЛА?', color: '#ffa502', time: 5 },
-  { name: 'Mike', text: 'НЕУЖЕЛИ Я ТУТ ОДИН?', color: '#ff4757', time: 6 },
-  { name: 'Я', text: '/MYAPPS', color: '#ffa502', time: 7 },
-  { name: 'Я', text: 'УМНЕЕ OPUS 5', color: '#9b59b6', time: 8 },
-  { name: 'Я', text: 'ГДЕ $1?!', color: '#ff4757', time: 9 },
-  { name: 'Я', text: 'ТАКТИКА БЫЛА', color: '#2ed573', time: 10 },
-  { name: 'Я', text: '802 ОПТИМИСТА', color: '#00d2d3', time: 11 }
-];
+let wall = [];
 
 export const live = gem => {
   gem.hall({
@@ -54,13 +42,13 @@ export default async (req, gem) => {
       wall = wall.filter(t => (t.text ? t.text.toLowerCase() : '') !== k);
       wall.push(item);
       if (wall.length > 70) wall.shift();
-      try { await gem.store.set('w', JSON.stringify(wall.slice(-35))); } catch(e) {}
+      try { await gem.store.set('w_clean', JSON.stringify(wall.slice(-35))); } catch(e) {}
     }
     return { wall: wall };
   }
 
   try {
-    const raw = await gem.store.get('w');
+    const raw = await gem.store.get('w_clean');
     if (raw) {
       const saved = JSON.parse(raw);
       if (Array.isArray(saved)) {
